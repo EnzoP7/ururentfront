@@ -138,13 +138,13 @@ const Header = () => {
             Contacto
           </Link>
           <Link
-            className="xl:hidden btn btn-primary btn-sm max-w-[164px] mx-auto"
+            className="xl:hidden btn bg-accent-hover text-accent btn-sm max-w-[164px] mx-auto"
             to="/"
             activeClass="active"
             smooth={desktopMode}
             spy={true}
           >
-            See all cars
+            Ver Vehículos
           </Link>
           <SearchMobile />
         </nav>

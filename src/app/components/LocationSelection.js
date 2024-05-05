@@ -22,7 +22,7 @@ const LocationSelection = () => {
           <div className="w-full h-16 xl:h-full flex justify-center xl:justify-start xl:border-r xl:border-black/10">
             <div className="flex flex-col justify-center">
               <div className="flex flex-col xl:flex-row items-center xl:gap-x-2 gap-y-2 xl:gap-y-0">
-                <FaMapMarkerAlt className="text-accent" />{" "}
+                <FaMapMarkerAlt className="text-accent-hover xl:text-accent" />{" "}
                 <div className="text-[15px] uppercase font-bold">
                   Selecciona Ubicación
                 </div>
@@ -43,7 +43,7 @@ xl:-translate-x-0 text-sm text-center  xl:text-left w-full bg-white max-w-[332px
               <div
                 onClick={() => setLocation(laLocation)}
                 key={index}
-                className="cursor-pointer py-4 xl:pl-10 hover:bg-gray-50 text-[13px] uppercase"
+                className="cursor-pointer py-4 xl:pl-10 hover:bg-gray-50 text-[13px] text-black uppercase"
               >
                 {laLocation}
               </div>

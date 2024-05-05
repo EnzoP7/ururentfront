@@ -11,7 +11,7 @@ const SearchMobile = () => {
           <DateSelection />
           <HoursSelection />
           <div className="flex items-center px-6">
-            <button className="btn btn-sm bg-accent-hover w-[164px] mx-auto">
+            <button className="btn btn-sm bg-accent-hover text-accent w-[164px] mx-auto">
               Buscar
             </button>
           </div>

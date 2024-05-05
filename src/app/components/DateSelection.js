@@ -25,7 +25,7 @@ const DateSelection = () => {
       <div className="relative flex-1">
         <Menu.Button className="dropdown-btn w-full h-full flex flex-col justify-center items-center xl:items-start xl:pl-8">
           <div className="flex flex-col xl:flex-row items-center xl:gap-x-2 gap-y-2 xl:gap-y-0">
-            <FaCalendarAlt className="text-accent" />{" "}
+            <FaCalendarAlt className="text-accent-hover  xl:text-accent" />{" "}
             <div className="text-[15px] uppercase font-bold">
               Selecciona Fecha
             </div>
@@ -34,7 +34,7 @@ const DateSelection = () => {
             <div className="text-[13px] font-medium text-secondary">
               {format(date[0].startDate, "dd/MM/yyyy")}
             </div>
-            <FaArrowRightLong className="text-accent text-[12px]" />
+            <FaArrowRightLong className="text-accent-hover  xl:text-accent text-[12px]" />
             <div className="text-[13px] font-medium text-secondary">
               {date[0].endDate ? (
                 <div>{format(date[0].endDate, "dd/MM/yyyy")}</div>
