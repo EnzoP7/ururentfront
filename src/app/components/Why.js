@@ -36,7 +36,7 @@ const Why = () => {
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: false, amount: 0.6 }}
-          className="hidden md:flex justify-center mb-6 xl:mb-2"
+          className="flex justify-center mb-6 xl:mb-2"
         >
           <Image
             src={"/images/why/vento.webp"}
@@ -55,7 +55,9 @@ const Why = () => {
         >
           <div className="flex flex-col items-center text-center max-w-[160px] xl:max-w-none p-2 xl:p-0">
             <MdKey className="text-[38px] text-accent mb-4" />
-            <h3 className="h3">Alquile de manera facil y rapida</h3>
+            <h3 className="xl:h3 text-2xl font-bold">
+              Alquile de manera facil y rapida
+            </h3>
             <p className="hidden xl:flex">
               Nuestros servicios se destacan por su rapidez y flexibilidad,
               permitiendo a nuestros clientes acceder de manera sencilla y veloz
@@ -64,7 +66,9 @@ const Why = () => {
           </div>
           <div className="flex flex-col items-center text-center max-w-[160px] xl:max-w-none p-2 xl:p-0">
             <MdTrendingUp className="text-[38px] text-accent mb-4" />
-            <h3 className="h3">Vehiculos de Ultima Generación</h3>
+            <h3 className="xl:h3 text-2xl font-bold">
+              Vehiculos de Ultima Generación
+            </h3>
             <p className="hidden xl:flex">
               En nuestra flota, contamos con vehículos de última generación
               equipados con tecnología avanzada que garantiza la seguridad y
@@ -73,7 +77,9 @@ const Why = () => {
           </div>
           <div className="flex flex-col items-center text-center max-w-[160px] xl:max-w-none p-2 xl:p-0">
             <MdHandshake className="text-[38px] text-accent mb-4" />
-            <h3 className="h3">Servicios rápidos y flexibles</h3>
+            <h3 className="xl:h3 text-2xl font-bold">
+              Servicios rápidos y flexibles
+            </h3>
             <p className="hidden xl:flex">
               Servicios rápidos y flexibles, además de una atención al cliente
               excepcional, asegurando así que cada experiencia de alquiler sea

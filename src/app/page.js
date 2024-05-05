@@ -7,6 +7,8 @@ import Testimonial from "./components/Testimonial";
 import Cta from "./components/Cta";
 import Footer from "./components/Footer";
 import BackToTopBtn from "./components/BackToTopBtn";
+import PreguntasFrecuentes from "./components/PreguntasFrecuentes";
+import Condiciones from "./components/Condiciones";
 
 export default function Home() {
   return (
@@ -15,7 +17,13 @@ export default function Home() {
       <Hero />
       <Cars />
       <About />
-      <Why />
+      <PreguntasFrecuentes />
+      <div className="xl:hidden md:pt-0 md:mb-0 pt-40 mb-40">
+        <Condiciones />
+      </div>
+      <div className="mt-40 xl:mt-0">
+        <Why />
+      </div>
       <Testimonial />
       <Cta />
       <Footer />

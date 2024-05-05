@@ -21,7 +21,12 @@ const Footer = () => {
         >
           <div className="flex flex-col flex-1 gap-y-0">
             <Link to="home" smooth={true} spy={true} className="cursor-pointer">
-              <Image src={"/icons/logo.svg"} width={200} height={200} alt="" />
+              <Image
+                src={"/images/marca/logo.png"}
+                width={200}
+                height={200}
+                alt=""
+              />
             </Link>
             <div className="text-secondary">
               "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.

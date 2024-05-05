@@ -10,42 +10,13 @@ import { fadeIn } from "../../../variants";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const cars = [
-  {
-    type: "Hatchback",
-    name: "Ford Focus",
-    price: 29,
-    starts: 3.5,
-    image: "images/carSlider/car01.svg",
-    info: [
-      {
-        icon: "icons/carSlider/gearshift.svg",
-        text: "Manual",
-      },
-      {
-        icon: "icons/carSlider/seat.svg",
-        text: "5 Seats",
-      },
-      {
-        icon: "icons/carSlider/gas.svg",
-        text: "Gas",
-      },
-      {
-        icon: "icons/carSlider/gearshift.svg",
-        text: "Manual",
-      },
-      {
-        icon: "icons/carSlider/wheel.svg",
-        text: "Front",
-      },
-    ],
-  },
+export const cars = [
   {
     type: "Sedan",
-    name: "Toyota Corolla",
-    price: 25,
-    starts: 5,
-    image: "images/carSlider/car02.svg",
+    name: "Volkswagen Gol",
+    price: 29,
+    starts: 5.0,
+    image: "/images/cars/golsedan.jpeg",
     info: [
       {
         icon: "icons/carSlider/gearshift.svg",
@@ -53,15 +24,102 @@ const cars = [
       },
       {
         icon: "icons/carSlider/seat.svg",
-        text: "5 Seats",
+        text: "5 Asientos",
       },
       {
         icon: "icons/carSlider/gas.svg",
-        text: "Gas",
+        text: "Nafta",
       },
+      {
+        icon: "icons/carSlider/engine.svg",
+        text: "1600 HP",
+      },
+      {
+        icon: "icons/carSlider/wheel.svg",
+        text: "Delantera",
+      },
+    ],
+  },
+  {
+    type: "Hatch",
+    name: "Volkswagen Gol",
+    price: 29,
+    starts: 5.0,
+    image: "/images/cars/golhatch.jpeg",
+    info: [
       {
         icon: "icons/carSlider/gearshift.svg",
         text: "Manual",
+      },
+      {
+        icon: "icons/carSlider/seat.svg",
+        text: "5 Asientos",
+      },
+      {
+        icon: "icons/carSlider/gas.svg",
+        text: "Nafta",
+      },
+      {
+        icon: "icons/carSlider/engine.svg",
+        text: "1600 HP",
+      },
+      {
+        icon: "icons/carSlider/wheel.svg",
+        text: "Delantera",
+      },
+    ],
+  },
+  {
+    type: "Pick Up",
+    name: "Fiat Strada",
+    price: 29,
+    starts: 5.0,
+    image: "/images/cars/strada.jpeg",
+    info: [
+      {
+        icon: "icons/carSlider/gearshift.svg",
+        text: "Manual",
+      },
+      {
+        icon: "icons/carSlider/seat.svg",
+        text: "5 Asientos",
+      },
+      {
+        icon: "icons/carSlider/gas.svg",
+        text: "Nafta",
+      },
+      {
+        icon: "icons/carSlider/engine.svg",
+        text: "1600 HP",
+      },
+      {
+        icon: "icons/carSlider/wheel.svg",
+        text: "Delantera",
+      },
+    ],
+  },
+  {
+    type: "Pick Up",
+    name: "Volkswagen Saveiro",
+    price: 25,
+    starts: 5,
+    image: "/images/cars/saveiro.jpeg",
+    info: [
+      {
+        icon: "icons/carSlider/gearshift.svg",
+        text: "Manual",
+      },
+      {
+        icon: "icons/carSlider/seat.svg",
+        text: "2 Asientos",
+      },
+      {
+        icon: "icons/carSlider/gas.svg",
+        text: "Nafta",
+      },
+      {
+        icon: "icons/carSlider/engine.svg",
+        text: "1600 HP",
       },
       {
         icon: "icons/carSlider/wheel.svg",
@@ -70,11 +128,11 @@ const cars = [
     ],
   },
   {
-    type: "SUV",
-    name: "Honda CR-V",
+    type: "Pick Up",
+    name: "Nissan Frontier",
     price: 35,
     starts: 4.7,
-    image: "images/carSlider/car03.svg",
+    image: "/images/cars/frontier.jpeg",
     info: [
       {
         icon: "icons/carSlider/gearshift.svg",
@@ -82,28 +140,29 @@ const cars = [
       },
       {
         icon: "icons/carSlider/seat.svg",
-        text: "5 Seats",
+        text: "5 Asientos",
       },
       {
         icon: "icons/carSlider/gas.svg",
-        text: "Gas",
+        text: "Nafta",
       },
       {
-        icon: "icons/carSlider/gearshift.svg",
-        text: "Manual",
+        icon: "icons/carSlider/engine.svg",
+        text: "2400 HP",
       },
       {
         icon: "icons/carSlider/wheel.svg",
-        text: "Front",
+        text: "X4",
       },
     ],
   },
+
   {
-    type: "Convertible",
-    name: "Mazda MX-5",
-    price: 32,
-    starts: 4.9,
-    image: "images/carSlider/car02.svg",
+    type: "Pick Up",
+    name: "Fiat Fiorino",
+    price: 29,
+    starts: 5.0,
+    image: "/images/cars/fiorino.jpeg",
     info: [
       {
         icon: "icons/carSlider/gearshift.svg",
@@ -111,19 +170,19 @@ const cars = [
       },
       {
         icon: "icons/carSlider/seat.svg",
-        text: "5 Seats",
+        text: "2 Asientos",
       },
       {
         icon: "icons/carSlider/gas.svg",
-        text: "Gas",
+        text: "Nafta",
       },
       {
-        icon: "icons/carSlider/gearshift.svg",
-        text: "Manual",
+        icon: "icons/carSlider/engine.svg",
+        text: "1400 HP",
       },
       {
         icon: "icons/carSlider/wheel.svg",
-        text: "Front",
+        text: "Delantera",
       },
     ],
   },
@@ -157,7 +216,7 @@ const CarSlider = () => {
                     </div>
                     <h3 className="text-lg uppercase font-bold">{car.name}</h3>
                     <h3 className="mb-10 text-accent font-semibold uppercase">
-                      {car.price}/day
+                      {car.price}/dia
                     </h3>
                   </div>
                   <div className="flex fap-x-2  text-accent h-max">
@@ -186,7 +245,7 @@ const CarSlider = () => {
                   })}
                 </div>
 
-                <button className="btn btn-accent btn-lg">See details</button>
+                <button className="btn btn-accent btn-lg">Ver Detalles</button>
               </div>
             </SwiperSlide>
           );

@@ -37,7 +37,7 @@ const testimonialData = [
   },
   {
     message:
-      "He alquilado autos en varias ocasiones con esta empresa y nunca me han decepcionado. Su atención al cliente es excepcional y la calidad de los vehículos es de primera. ¡Sin duda, son mi opción preferida cuando necesito movilizarme durante mis viajes!",
+      "He alquilado autos en varias ocasiones con esta empresa y nunca me han decepcionado. Su atención al cliente es excepcional y la calidad de los vehículos es de primera.",
     avatar: "/images/testimonial/avatar.png",
     name: "Roberto López,",
     job: "Viajero Frecuente",
