@@ -1,14 +1,14 @@
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import Cars from "./components/Cars";
-import About from "./components/About";
-import Why from "./components/Why";
-import Testimonial from "./components/Testimonial";
-import Cta from "./components/Cta";
-import Footer from "./components/Footer";
-import BackToTopBtn from "./components/BackToTopBtn";
-import PreguntasFrecuentes from "./components/PreguntasFrecuentes";
-import Condiciones from "./components/Condiciones";
+import Header from "./components/Web/Header";
+import Hero from "./components/Web/Hero";
+import Cars from "./components/Web/Cars";
+import About from "./components/Web/About";
+import Why from "./components/Web/Why";
+import Testimonial from "./components/Web/Testimonial";
+import Cta from "./components/Web/Cta";
+import Footer from "./components/Web/Footer";
+import BackToTopBtn from "./components/Web/BackToTopBtn";
+import PreguntasFrecuentes from "./components/Web/PreguntasFrecuentes";
+import Condiciones from "./components/Web/Condiciones";
 
 export default function Home() {
   return (

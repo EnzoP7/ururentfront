@@ -2,12 +2,13 @@
 
 import { useContext, useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import { Link } from "react-scroll";
+import Link from "next/link";
+import { Link as ScrollLink } from "react-scroll";
 import Image from "next/image";
 
 import { BiMenuAltRight, BiX } from "react-icons/bi";
 import SearchMobile from "./SearchMobile";
-import { SearchContext } from "../context/search";
+import { SearchContext } from "../../context/search";
 
 const Header = () => {
   const { setSearchActive } = useContext(SearchContext);
@@ -50,7 +51,7 @@ const Header = () => {
       <div className="xl:container mx-auto flex flex-col xl:flex-row xl:items-center xl:justify-between">
         <div className="flex justify-between items-center px-4">
           {/*Logo */}
-          <Link
+          <ScrollLink
             to="home"
             smooth={desktopMode}
             spy={true}
@@ -62,7 +63,7 @@ const Header = () => {
               height={64}
               alt="Logo"
             />
-          </Link>
+          </ScrollLink>
           {/* Nav open Menu*/}
           <div
             onClick={() => setNav(!nav)}
@@ -83,7 +84,7 @@ const Header = () => {
            xl:flex-row xl:w-max xl:gap-x-8 xl:h-max xl:bg-transparent xl:pb-0 transition-all duration-150
           text-center xl:text-left uppercase text-sm xl:text-[15px] xl:normal-case text-white`}
         >
-          <Link
+          <ScrollLink
             className="cursor-pointer"
             to="home"
             activeClass="active"
@@ -91,8 +92,8 @@ const Header = () => {
             spy={true}
           >
             Inicio
-          </Link>
-          <Link
+          </ScrollLink>
+          <ScrollLink
             className="cursor-pointer"
             to="cars"
             activeClass="active"
@@ -100,8 +101,8 @@ const Header = () => {
             spy={true}
           >
             Vehículos
-          </Link>
-          <Link
+          </ScrollLink>
+          <ScrollLink
             className="cursor-pointer"
             to="about"
             activeClass="active"
@@ -109,8 +110,8 @@ const Header = () => {
             spy={true}
           >
             Sobre Nosotros
-          </Link>
-          <Link
+          </ScrollLink>
+          <ScrollLink
             className="cursor-pointer"
             to="why"
             activeClass="active"
@@ -118,8 +119,8 @@ const Header = () => {
             spy={true}
           >
             ¿Por qué elegirnos?
-          </Link>
-          <Link
+          </ScrollLink>
+          <ScrollLink
             className="cursor-pointer"
             to="testimonials"
             activeClass="active"
@@ -127,8 +128,8 @@ const Header = () => {
             spy={true}
           >
             Testimonios
-          </Link>
-          <Link
+          </ScrollLink>
+          <ScrollLink
             className="cursor-pointer"
             to="contact"
             activeClass="active"
@@ -136,8 +137,12 @@ const Header = () => {
             spy={true}
           >
             Contacto
+          </ScrollLink>
+          <Link href="/login" className="cursor-pointer">
+            Iniciar Sesión
           </Link>
-          <Link
+
+          <ScrollLink
             className="xl:hidden btn bg-accent-hover text-accent btn-sm max-w-[164px] mx-auto"
             to="/"
             activeClass="active"
@@ -145,7 +150,8 @@ const Header = () => {
             spy={true}
           >
             Ver Vehículos
-          </Link>
+          </ScrollLink>
+
           <SearchMobile />
         </nav>
       </div>

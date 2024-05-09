@@ -2,12 +2,12 @@
 
 import { useContext } from "react";
 import Search from "./Search";
-import { SearchContext } from "../context/search";
+import { SearchContext } from "../../context/search";
 import Image from "next/image";
 
 import { motion, easeInOut } from "framer-motion";
 
-import { fadeIn } from "../../../variants";
+import { fadeIn } from "../../../../variants";
 
 const Hero = () => {
   const { searchActive } = useContext(SearchContext);

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Condiciones from "./Condiciones";
 import { motion } from "framer-motion";
 
-import { fadeIn } from "../../../variants";
+import { fadeIn } from "../../../../variants";
 
 const PreguntasFrecuentes = () => {
   const [faqs, setFaqs] = useState([

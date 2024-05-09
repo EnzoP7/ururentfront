@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { fadeIn } from "../../../variants";
+import { fadeIn } from "../../../../variants";
 
 import { MdHandshake, MdKey, MdTrendingUp } from "react-icons/md";
 

@@ -1,19 +1,29 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import Link from "next/link";
 import "swiper/css";
 
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
-import { fadeIn } from "../../../variants";
+import { fadeIn } from "../../../../variants";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-export const cars = [
+export const losCars = [
   {
+    id: 1,
     type: "Sedan",
     name: "Volkswagen Gol",
+    pasajeros: 5,
+    puertas: 4,
+    motor: "1600cc",
+    baul: "2 Maletas",
+    combustible: "Nafta Super 95",
+    rendimiento: "13km/lt",
+    direccion: "Hidraulica",
+    radio: "Radio con CD, MP3, Bluetooth, lector de tarjetas SD y puerto USB",
+    aire_Acondicionado: "Si",
     price: 29,
     starts: 5.0,
     image: "/images/cars/golsedan.jpeg",
@@ -41,8 +51,18 @@ export const cars = [
     ],
   },
   {
+    id: 2,
     type: "Hatch",
     name: "Volkswagen Gol",
+    pasajeros: 5,
+    puertas: 4,
+    motor: "1600cc",
+    baul: "2 Maletas",
+    combustible: "Nafta Super 95",
+    rendimiento: "13km/lt",
+    direccion: "Hidraulica",
+    radio: "Radio con CD, MP3, Bluetooth, lector de tarjetas SD y puerto USB",
+    aire_Acondicionado: "Si",
     price: 29,
     starts: 5.0,
     image: "/images/cars/golhatch.jpeg",
@@ -70,8 +90,18 @@ export const cars = [
     ],
   },
   {
+    id: 3,
     type: "Pick Up",
     name: "Fiat Strada",
+    pasajeros: 5,
+    puertas: 4,
+    motor: "1600cc",
+    baul: "2 Maletas",
+    combustible: "Nafta Super 95",
+    rendimiento: "13km/lt",
+    direccion: "Hidraulica",
+    radio: "Radio con CD, MP3, Bluetooth, lector de tarjetas SD y puerto USB",
+    aire_Acondicionado: "Si",
     price: 29,
     starts: 5.0,
     image: "/images/cars/strada.jpeg",
@@ -99,8 +129,18 @@ export const cars = [
     ],
   },
   {
+    id: 4,
     type: "Pick Up",
     name: "Volkswagen Saveiro",
+    pasajeros: 5,
+    puertas: 4,
+    motor: "1600cc",
+    baul: "2 Maletas",
+    combustible: "Nafta Super 95",
+    rendimiento: "13km/lt",
+    direccion: "Hidraulica",
+    radio: "Radio con CD, MP3, Bluetooth, lector de tarjetas SD y puerto USB",
+    aire_Acondicionado: "Si",
     price: 25,
     starts: 5,
     image: "/images/cars/saveiro.jpeg",
@@ -128,8 +168,18 @@ export const cars = [
     ],
   },
   {
+    id: 5,
     type: "Pick Up",
     name: "Nissan Frontier",
+    pasajeros: 5,
+    puertas: 4,
+    motor: "1600cc",
+    baul: "2 Maletas",
+    combustible: "Nafta Super 95",
+    rendimiento: "13km/lt",
+    direccion: "Hidraulica",
+    radio: "Radio con CD, MP3, Bluetooth, lector de tarjetas SD y puerto USB",
+    aire_Acondicionado: "Si",
     price: 35,
     starts: 4.7,
     image: "/images/cars/frontier.jpeg",
@@ -158,8 +208,18 @@ export const cars = [
   },
 
   {
+    id: 6,
     type: "Pick Up",
     name: "Fiat Fiorino",
+    pasajeros: 5,
+    puertas: 4,
+    motor: "1600cc",
+    baul: "2 Maletas",
+    combustible: "Nafta Super 95",
+    rendimiento: "13km/lt",
+    direccion: "Hidraulica",
+    radio: "Radio con CD, MP3, Bluetooth, lector de tarjetas SD y puerto USB",
+    aire_Acondicionado: "Si",
     price: 29,
     starts: 5.0,
     image: "/images/cars/fiorino.jpeg",
@@ -204,7 +264,7 @@ const CarSlider = () => {
           1260: { slidesPerView: 3, spaceBetween: 15 },
         }}
       >
-        {cars.map((car, index) => {
+        {losCars.map((car, index) => {
           return (
             <SwiperSlide key={index}>
               <div className="max-w-[385px] mx-auto sm:mx-0  ">
@@ -244,8 +304,11 @@ const CarSlider = () => {
                     );
                   })}
                 </div>
-
-                <button className="btn btn-accent btn-lg">Ver Detalles</button>
+                <Link href={`/Web/carInfo/${car.id}`}>
+                  <button className="btn btn-accent btn-lg">
+                    Ver Detalles
+                  </button>
+                </Link>
               </div>
             </SwiperSlide>
           );

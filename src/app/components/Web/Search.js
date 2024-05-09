@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { SearchContext } from "../context/search";
+import { SearchContext } from "../../context/search";
 import LocationSelection from "./LocationSelection";
 import DateSelection from "./DateSelection";
 import HoursSelection from "./HoursSelection";

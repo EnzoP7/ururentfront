@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 
 import { FaQuoteLeft } from "react-icons/fa";
 
-import { fadeIn } from "../../../variants";
+import { fadeIn } from "../../../../variants";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
