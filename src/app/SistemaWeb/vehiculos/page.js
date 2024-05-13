@@ -9,6 +9,7 @@ import Link from "next/link";
 const Page = () => {
   const objetos = [
     {
+      id: 1,
       matricula: "ABC123",
       padron: "Ef6391GhU863",
       codigoNacional: 76528123,
@@ -26,6 +27,7 @@ const Page = () => {
       emitido: "2024-05-01T12:34:56.789Z",
     },
     {
+      id: 2,
       matricula: "XYZ789",
       padron: "GhU863Ef6391",
       codigoNacional: 98765432,
@@ -43,6 +45,7 @@ const Page = () => {
       emitido: "2024-05-01T12:34:56.789Z",
     },
     {
+      id: 3,
       matricula: "DEF456",
       padron: "1234GhU863Ef",
       codigoNacional: 13579246,
@@ -60,6 +63,7 @@ const Page = () => {
       emitido: "2024-05-01T12:34:56.789Z",
     },
     {
+      id: 4,
       matricula: "GHI789",
       padron: "U863Ef6391Gh",
       codigoNacional: 24681357,
@@ -77,6 +81,7 @@ const Page = () => {
       emitido: "2024-05-01T12:34:56.789Z",
     },
     {
+      id: 5,
       matricula: "JKL987",
       padron: "863Ef6391GhU",
       codigoNacional: 11111111,
@@ -94,6 +99,7 @@ const Page = () => {
       emitido: "2024-05-01T12:34:56.789Z",
     },
     {
+      id: 6,
       matricula: "MNO654",
       padron: "39GhU863Ef631",
       codigoNacional: 22222222,
@@ -111,6 +117,7 @@ const Page = () => {
       emitido: "2024-05-01T12:34:56.789Z",
     },
     {
+      id: 7,
       matricula: "PQR321",
       padron: "9GhU863Ef6391",
       codigoNacional: 33333333,
@@ -128,6 +135,7 @@ const Page = () => {
       emitido: "2024-05-01T12:34:56.789Z",
     },
     {
+      id: 8,
       matricula: "STU987",
       padron: "GhU863Ef63914",
       codigoNacional: 44444444,
@@ -145,6 +153,7 @@ const Page = () => {
       emitido: "2024-05-01T12:34:56.789Z",
     },
     {
+      id: 9,
       matricula: "VWX654",
       padron: "Ef6391GhU8639",
       codigoNacional: 55555555,
@@ -162,6 +171,7 @@ const Page = () => {
       emitido: "2024-05-01T12:34:56.789Z",
     },
     {
+      id: 10,
       matricula: "YZA987",
       padron: "F6391GhU863E",
       codigoNacional: 66666666,
@@ -179,6 +189,7 @@ const Page = () => {
       emitido: "2024-05-01T12:34:56.789Z",
     },
     {
+      id: 11,
       matricula: "LAL2367",
       padron: "Ef6391GhU863",
       codigoNacional: 76528123,
@@ -196,6 +207,7 @@ const Page = () => {
       emitido: "2024-05-01T12:34:56.789Z",
     },
     {
+      id: 12,
       matricula: "LAL 5432",
       padron: "Ef6391GhU863",
       codigoNacional: 76528123,
@@ -213,6 +225,7 @@ const Page = () => {
       emitido: "2024-05-01T12:34:56.789Z",
     },
     {
+      id: 13,
       matricula: "LAL 8829",
       padron: "Ef6391GhU863",
       codigoNacional: 76528123,
@@ -419,10 +432,12 @@ const Page = () => {
                   <td className="border border-gray-800 px-4 py-2">
                     <div className="flex items-center justify-center pt-2 gap-6">
                       <div>
-                        <FaEye
-                          size={25}
-                          className="fill-sky-400 cursor-pointer"
-                        />
+                        <Link href={`/SistemaWeb/vehiculos/${objeto.id}`}>
+                          <FaEye
+                            size={25}
+                            className="fill-sky-400 cursor-pointer"
+                          />
+                        </Link>
                       </div>
                       <div>
                         <BsPencilSquare
@@ -474,12 +489,15 @@ const Page = () => {
           </div>
           <ul className="border border-azulfuerte rounded-md overflow-hidden">
             {filteredItemsM.map((objeto, index) => (
-              <li key={index} className="border-b border-azulfuerte">
-                <div className="p-3">
-                  <p className="font-semibold">{objeto.matricula}</p>
-                  <p>{objeto.marca}</p>
-                </div>
-              </li>
+              <div>
+                <Link href={`/SistemaWeb/vehiculos/${objeto.id}`}></Link>
+                <li key={index} className="border-b border-azulfuerte">
+                  <div className="p-3">
+                    <p className="font-semibold">{objeto.matricula}</p>
+                    <p>{objeto.marca}</p>
+                  </div>
+                </li>
+              </div>
             ))}
             {filteredItemsM.length === 0 && (
               <li className="p-3 text-azulfuerte">

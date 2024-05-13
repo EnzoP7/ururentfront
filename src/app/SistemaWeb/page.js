@@ -71,7 +71,7 @@ const page = () => {
     <LayoutSistema>
       <div className="mx-auto text-white font-bold uppercase pt-10">
         <div className="flex md:flex-row flex-col  gap-y-5 xl:gap-y-0 md:gap-x-8 justify-between">
-          <Link href={"#"}>
+          <Link href={"/SistemaWeb/vehiculos"}>
             <div className="flex flex-col items-center justify-center bg-azul  py-5 px-10 md:py-5 md:px-16 xl:py-10 xl:px-20  hover:bg-azulfuerte rounded-lg cursor-pointer">
               <PiCarSimpleBold className="size-[50px] xl:size-[100px] md:size-[60px] " />
               <h3 className="md:text-xl xl:text-3xl">Vehículos</h3>
