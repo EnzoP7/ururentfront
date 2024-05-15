@@ -1,10 +1,15 @@
 "use client";
 import React from "react";
+import axios from "axios";
 import LayoutSistema from "../../layoutSistema";
 import { useForm } from "react-hook-form";
 import { getYear } from "date-fns";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 const page = () => {
+  const router = useRouter();
+
   const {
     register,
     control,
@@ -12,8 +17,105 @@ const page = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log("Datos Que se estan Enviando: ", data);
+  const transformarDatos = (datos) => {
+    const datosTransformados = {};
+    for (const clave in datos) {
+      if (datos.hasOwnProperty(clave)) {
+        if (datos[clave] === "") {
+          datosTransformados[clave] = null;
+        } else if (!isNaN(datos[clave])) {
+          datosTransformados[clave] = parseInt(datos[clave]);
+        } else {
+          datosTransformados[clave] = datos[clave];
+        }
+      }
+    }
+    return datosTransformados;
+  };
+
+  const onSubmit = async (data) => {
+    let funca;
+    try {
+      const datosTransformados = transformarDatos(data);
+      console.log("Datos Que se estan Enviando: ", {
+        matricula: datosTransformados.matricula,
+        padron: datosTransformados.padron,
+        codigoNacional: datosTransformados.codigoNacional,
+        divNum: datosTransformados.divNum,
+        marca: datosTransformados.marca,
+        modelo: datosTransformados.modelo,
+        anio: datosTransformados.anio,
+        kilometros: datosTransformados.kilometros,
+        color: datosTransformados.color,
+        tipo: datosTransformados.tipo,
+        combustible: datosTransformados.combustible,
+        numeroMotor: datosTransformados.numeroMotor,
+        numeroChasis: datosTransformados.numeroChasis,
+        ciRut: datosTransformados.ciRut,
+        empadronado: datosTransformados.empadronado,
+        emitido: datosTransformados.emitido,
+      });
+      const response = await axios.post("http://localhost:3000/api/vehiculo/", {
+        matricula: datosTransformados.matricula,
+        padron: datosTransformados.padron,
+        codigoNacional: datosTransformados.codigoNacional,
+        divNum: datosTransformados.divNum,
+        marca: datosTransformados.marca,
+        modelo: datosTransformados.modelo,
+        anio: datosTransformados.anio,
+        kilometros: datosTransformados.kilometros,
+        color: datosTransformados.color,
+        tipo: datosTransformados.tipo,
+        combustible: datosTransformados.combustible,
+        numeroMotor: datosTransformados.numeroMotor,
+        numeroChasis: datosTransformados.numeroChasis,
+        ciRut: datosTransformados.ciRut,
+        empadronado: datosTransformados.empadronado,
+        emitido: datosTransformados.emitido,
+      });
+
+      console.log("Respuesta del servidor:", response.data);
+      response.status === 201 ? (funca = true) : (funca = false);
+    } catch (error) {
+      console.error("Error al realizar la petición POST:", error);
+    }
+
+    funca
+      ? Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Vehículo Ingresado Con Exito",
+          showConfirmButton: false,
+          timer: 2000,
+          color: "info",
+          background: "#fff",
+          backdrop: `
+        rgba(0,0,123,0.4)
+       
+        left top
+        no-repeat
+      `,
+        })
+      : Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Algo salio Mal",
+          showConfirmButton: false,
+          timer: 2000,
+          color: "info",
+          background: "#fff",
+          backdrop: `
+        rgba(0,0,123,0.4)
+       
+        left top
+        no-repeat
+      `,
+        });
+
+    // redireccion
+    setTimeout(() => {
+      router.push("/SistemaWeb/vehiculos/");
+    }, 2000);
   };
 
   const colores = [
@@ -36,6 +138,8 @@ const page = () => {
     "Ford",
     "Toyota",
   ];
+
+  const handleIngresarVehiculo = () => {};
 
   return (
     <div>
@@ -66,9 +170,8 @@ const page = () => {
                   className="p-3 rounded-md"
                   id="Marca"
                   required={true}
-                  {...register("Marca")}
+                  {...register("marca")}
                 >
-                  <option selected>Selecciona Marca</option>
                   {marcas.map((marca, index) => (
                     <option key={index} value={marca}>
                       {marca}
@@ -85,9 +188,9 @@ const page = () => {
                   type="text"
                   id="Modelo"
                   required={true}
-                  {...register("Modelo")}
+                  {...register("modelo")}
                 />
-                {errors.Modelo && <span>Este campo es Requerido</span>}
+                {errors.modelo && <span>Este campo es Requerido</span>}
               </div>
               <div className="flex flex-col">
                 <label htmlFor="Tipo">Tipo</label>
@@ -97,11 +200,12 @@ const page = () => {
                   type="text"
                   id="Tipo"
                   required={true}
-                  {...register("Tipo")}
+                  {...register("tipo")}
                 />
-                {errors.Tipo && <span>Este campo es Requerido</span>}
+                {errors.tipo && <span>Este campo es Requerido</span>}
               </div>
-
+            </div>
+            <div className="flex pt-5 flex-col md:flex-row gap-10 px-3 md:px-0">
               <div className="flex flex-col">
                 <label htmlFor="Año">Año</label>
                 <input
@@ -113,9 +217,9 @@ const page = () => {
                   max={getYear(new Date())}
                   id="Año"
                   required={true}
-                  {...register("Año")}
+                  {...register("anio")}
                 />
-                {errors.Año && <span>Este campo es Requerido</span>}
+                {errors.anio && <span>Este campo es Requerido</span>}
               </div>
 
               <div className="flex flex-col">
@@ -126,7 +230,7 @@ const page = () => {
                   type="text"
                   id="Color"
                   required={true}
-                  {...register("Color")}
+                  {...register("color")}
                 >
                   {colores.map((color, index) => (
                     <option key={index} value={color}>
@@ -134,7 +238,19 @@ const page = () => {
                     </option>
                   ))}
                 </select>
-                {errors.Color && <span>Este campo es Requerido</span>}
+                {errors.color && <span>Este campo es Requerido</span>}
+              </div>
+              <div className="flex flex-col">
+                <label htmlFor="Kilometros">Kilometros</label>
+                <input
+                  className="p-3 rounded-md"
+                  placeholder="Ingresar Kilometros"
+                  type="number"
+                  id="Kilometros"
+                  required={true}
+                  {...register("kilometros")}
+                />
+                {errors.kilometros && <span>Este campo es Requerido</span>}
               </div>
             </div>
 
@@ -150,9 +266,9 @@ const page = () => {
                   type="text"
                   id="Padron"
                   required={false}
-                  {...register("Padron")}
+                  {...register("padron")}
                 />
-                {errors.Padron && <span>Este campo es Requerido</span>}
+                {errors.padron && <span>Este campo es Requerido</span>}
               </div>
 
               <div className="flex flex-col">
@@ -163,9 +279,9 @@ const page = () => {
                   type="text"
                   id="CodigoNacional"
                   required={false}
-                  {...register("CodigoNacional")}
+                  {...register("codigoNacional")}
                 />
-                {errors.CodigoNacional && <span>Este campo es Requerido</span>}
+                {errors.codigoNacional && <span>Este campo es Requerido</span>}
               </div>
               <div className="flex flex-col">
                 <label htmlFor="divNum">Div Num</label>
@@ -201,12 +317,12 @@ const page = () => {
                   type="text"
                   id="Combustible"
                   required={false}
-                  {...register("Combustible")}
+                  {...register("combustible")}
                 >
                   <option value={"nafta"}>Nafta</option>
                   <option value={"diesel"}>Diesel</option>
                 </select>
-                {errors.Combustible && <span>Este campo es Requerido</span>}
+                {errors.combustible && <span>Este campo es Requerido</span>}
               </div>
             </div>
             <div className="flex pt-5 flex-col md:flex-row gap-10 px-3 md:px-0">

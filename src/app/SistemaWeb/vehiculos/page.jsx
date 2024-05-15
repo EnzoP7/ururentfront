@@ -1,249 +1,255 @@
 "use client";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import LayoutSistema from "../layoutSistema";
 import { BsPencilSquare } from "react-icons/bs";
 import { FaPlus, FaEye, FaSearch } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import Link from "next/link";
+import Swal from "sweetalert2";
+import axios from "axios";
+import getVehiculos from "@/app/components/GetData/getVehiculos";
+import "sweetalert2/src/sweetalert2.scss";
 
 const Page = () => {
-  const objetos = [
-    {
-      id: 1,
-      matricula: "ABC123",
-      padron: "Ef6391GhU863",
-      codigoNacional: 76528123,
-      divNum: 625172,
-      marca: "Ford",
-      modelo: "Focus",
-      anio: 2018,
-      color: "azul",
-      tipo: "Sedan",
-      combustible: "gasolina",
-      numeroMotor: "AB12345",
-      numeroChasis: "67890DEF",
-      ciRut: "xyz123456",
-      empadronado: "2024-05-01T12:34:56.789Z",
-      emitido: "2024-05-01T12:34:56.789Z",
-    },
-    {
-      id: 2,
-      matricula: "XYZ789",
-      padron: "GhU863Ef6391",
-      codigoNacional: 98765432,
-      divNum: 98765,
-      marca: "Chevrolet",
-      modelo: "Cruze",
-      anio: 2019,
-      color: "rojo",
-      tipo: "Sedan",
-      combustible: "diesel",
-      numeroMotor: "CD67890",
-      numeroChasis: "12345ABC",
-      ciRut: "abc987654",
-      empadronado: "2024-05-01T12:34:56.789Z",
-      emitido: "2024-05-01T12:34:56.789Z",
-    },
-    {
-      id: 3,
-      matricula: "DEF456",
-      padron: "1234GhU863Ef",
-      codigoNacional: 13579246,
-      divNum: 24680,
-      marca: "Honda",
-      modelo: "Civic",
-      anio: 2021,
-      color: "negro",
-      tipo: "Sedan",
-      combustible: "gasolina",
-      numeroMotor: "EF67890",
-      numeroChasis: "ABCDE12345",
-      ciRut: "def456789",
-      empadronado: "2024-05-01T12:34:56.789Z",
-      emitido: "2024-05-01T12:34:56.789Z",
-    },
-    {
-      id: 4,
-      matricula: "GHI789",
-      padron: "U863Ef6391Gh",
-      codigoNacional: 24681357,
-      divNum: 13579,
-      marca: "BMW",
-      modelo: "Serie 3",
-      anio: 2020,
-      color: "blanco",
-      tipo: "Sedan",
-      combustible: "gasolina",
-      numeroMotor: "GH12345",
-      numeroChasis: "54321XYZ",
-      ciRut: "ghi987654",
-      empadronado: "2024-05-01T12:34:56.789Z",
-      emitido: "2024-05-01T12:34:56.789Z",
-    },
-    {
-      id: 5,
-      matricula: "JKL987",
-      padron: "863Ef6391GhU",
-      codigoNacional: 11111111,
-      divNum: 22222,
-      marca: "Mercedes-Benz",
-      modelo: "Clase C",
-      anio: 2017,
-      color: "plata",
-      tipo: "Sedan",
-      combustible: "gasolina",
-      numeroMotor: "JK67890",
-      numeroChasis: "ABCDE12345",
-      ciRut: "jkl123456",
-      empadronado: "2024-05-01T12:34:56.789Z",
-      emitido: "2024-05-01T12:34:56.789Z",
-    },
-    {
-      id: 6,
-      matricula: "MNO654",
-      padron: "39GhU863Ef631",
-      codigoNacional: 22222222,
-      divNum: 33333,
-      marca: "Audi",
-      modelo: "A4",
-      anio: 2019,
-      color: "gris",
-      tipo: "Sedan",
-      combustible: "diesel",
-      numeroMotor: "MN67890",
-      numeroChasis: "EDCBA54321",
-      ciRut: "mno987654",
-      empadronado: "2024-05-01T12:34:56.789Z",
-      emitido: "2024-05-01T12:34:56.789Z",
-    },
-    {
-      id: 7,
-      matricula: "PQR321",
-      padron: "9GhU863Ef6391",
-      codigoNacional: 33333333,
-      divNum: 44444,
-      marca: "Kia",
-      modelo: "Rio",
-      anio: 2016,
-      color: "azul",
-      tipo: "Hatchback",
-      combustible: "gasolina",
-      numeroMotor: "PQ67890",
-      numeroChasis: "54321FEDC",
-      ciRut: "pqr123456",
-      empadronado: "2024-05-01T12:34:56.789Z",
-      emitido: "2024-05-01T12:34:56.789Z",
-    },
-    {
-      id: 8,
-      matricula: "STU987",
-      padron: "GhU863Ef63914",
-      codigoNacional: 44444444,
-      divNum: 55555,
-      marca: "Hyundai",
-      modelo: "Elantra",
-      anio: 2021,
-      color: "blanco",
-      tipo: "Sedan",
-      combustible: "gasolina",
-      numeroMotor: "STU67890",
-      numeroChasis: "54321GFED",
-      ciRut: "stu987654",
-      empadronado: "2024-05-01T12:34:56.789Z",
-      emitido: "2024-05-01T12:34:56.789Z",
-    },
-    {
-      id: 9,
-      matricula: "VWX654",
-      padron: "Ef6391GhU8639",
-      codigoNacional: 55555555,
-      divNum: 66666,
-      marca: "Mazda",
-      modelo: "3",
-      anio: 2020,
-      color: "rojo",
-      tipo: "Hatchback",
-      combustible: "diesel",
-      numeroMotor: "VW67890",
-      numeroChasis: "54321VUTS",
-      ciRut: "vwx123456",
-      empadronado: "2024-05-01T12:34:56.789Z",
-      emitido: "2024-05-01T12:34:56.789Z",
-    },
-    {
-      id: 10,
-      matricula: "YZA987",
-      padron: "F6391GhU863E",
-      codigoNacional: 66666666,
-      divNum: 77777,
-      marca: "Subaru",
-      modelo: "Impreza",
-      anio: 2018,
-      color: "gris",
-      tipo: "Sedan",
-      combustible: "gasolina",
-      numeroMotor: "YZ67890",
-      numeroChasis: "54321UTSR",
-      ciRut: "yza987654",
-      empadronado: "2024-05-01T12:34:56.789Z",
-      emitido: "2024-05-01T12:34:56.789Z",
-    },
-    {
-      id: 11,
-      matricula: "LAL2367",
-      padron: "Ef6391GhU863",
-      codigoNacional: 76528123,
-      divNum: 625172,
-      marca: "Volswagen",
-      modelo: "Vento",
-      anio: 2020,
-      color: "blanco",
-      tipo: "Sedan",
-      combustible: "nafta",
-      numeroMotor: "37781jd12",
-      numeroChasis: "65128712das",
-      ciRut: "gyfw7792123",
-      empadronado: "2024-05-01T12:34:56.789Z",
-      emitido: "2024-05-01T12:34:56.789Z",
-    },
-    {
-      id: 12,
-      matricula: "LAL 5432",
-      padron: "Ef6391GhU863",
-      codigoNacional: 76528123,
-      divNum: 625172,
-      marca: "Volswagen",
-      modelo: "Hatch",
-      anio: 2020,
-      color: "blanco",
-      tipo: "Sedan",
-      combustible: "nafta",
-      numeroMotor: "37781jd12",
-      numeroChasis: "65128712das",
-      ciRut: "gyfw7792123",
-      empadronado: "2024-05-01T12:34:56.789Z",
-      emitido: "2024-05-01T12:34:56.789Z",
-    },
-    {
-      id: 13,
-      matricula: "LAL 8829",
-      padron: "Ef6391GhU863",
-      codigoNacional: 76528123,
-      divNum: 625172,
-      marca: "Toyota",
-      modelo: "Hailuz",
-      anio: 2020,
-      color: "blanco",
-      tipo: "Sedan",
-      combustible: "nafta",
-      numeroMotor: "37781jd12",
-      numeroChasis: "65128712das",
-      ciRut: "gyfw7792123",
-      empadronado: "2024-05-01T12:34:56.789Z",
-      emitido: "2024-05-01T12:34:56.789Z",
-    },
-    // Aquí podrías agregar más objetos si lo necesitas
-  ];
+  // const objetos = [
+  //   {
+  //     id: 1,
+  //     matricula: "ABC123",
+  //     padron: "Ef6391GhU863",
+  //     codigoNacional: 76528123,
+  //     divNum: 625172,
+  //     marca: "Ford",
+  //     modelo: "Focus",
+  //     anio: 2018,
+  //     color: "azul",
+  //     tipo: "Sedan",
+  //     combustible: "gasolina",
+  //     numeroMotor: "AB12345",
+  //     numeroChasis: "67890DEF",
+  //     ciRut: "xyz123456",
+  //     empadronado: "2024-05-01T12:34:56.789Z",
+  //     emitido: "2024-05-01T12:34:56.789Z",
+  //   },
+  //   {
+  //     id: 2,
+  //     matricula: "XYZ789",
+  //     padron: "GhU863Ef6391",
+  //     codigoNacional: 98765432,
+  //     divNum: 98765,
+  //     marca: "Chevrolet",
+  //     modelo: "Cruze",
+  //     anio: 2019,
+  //     color: "rojo",
+  //     tipo: "Sedan",
+  //     combustible: "diesel",
+  //     numeroMotor: "CD67890",
+  //     numeroChasis: "12345ABC",
+  //     ciRut: "abc987654",
+  //     empadronado: "2024-05-01T12:34:56.789Z",
+  //     emitido: "2024-05-01T12:34:56.789Z",
+  //   },
+  //   {
+  //     id: 3,
+  //     matricula: "DEF456",
+  //     padron: "1234GhU863Ef",
+  //     codigoNacional: 13579246,
+  //     divNum: 24680,
+  //     marca: "Honda",
+  //     modelo: "Civic",
+  //     anio: 2021,
+  //     color: "negro",
+  //     tipo: "Sedan",
+  //     combustible: "gasolina",
+  //     numeroMotor: "EF67890",
+  //     numeroChasis: "ABCDE12345",
+  //     ciRut: "def456789",
+  //     empadronado: "2024-05-01T12:34:56.789Z",
+  //     emitido: "2024-05-01T12:34:56.789Z",
+  //   },
+  //   {
+  //     id: 4,
+  //     matricula: "GHI789",
+  //     padron: "U863Ef6391Gh",
+  //     codigoNacional: 24681357,
+  //     divNum: 13579,
+  //     marca: "BMW",
+  //     modelo: "Serie 3",
+  //     anio: 2020,
+  //     color: "blanco",
+  //     tipo: "Sedan",
+  //     combustible: "gasolina",
+  //     numeroMotor: "GH12345",
+  //     numeroChasis: "54321XYZ",
+  //     ciRut: "ghi987654",
+  //     empadronado: "2024-05-01T12:34:56.789Z",
+  //     emitido: "2024-05-01T12:34:56.789Z",
+  //   },
+  //   {
+  //     id: 5,
+  //     matricula: "JKL987",
+  //     padron: "863Ef6391GhU",
+  //     codigoNacional: 11111111,
+  //     divNum: 22222,
+  //     marca: "Mercedes-Benz",
+  //     modelo: "Clase C",
+  //     anio: 2017,
+  //     color: "plata",
+  //     tipo: "Sedan",
+  //     combustible: "gasolina",
+  //     numeroMotor: "JK67890",
+  //     numeroChasis: "ABCDE12345",
+  //     ciRut: "jkl123456",
+  //     empadronado: "2024-05-01T12:34:56.789Z",
+  //     emitido: "2024-05-01T12:34:56.789Z",
+  //   },
+  //   {
+  //     id: 6,
+  //     matricula: "MNO654",
+  //     padron: "39GhU863Ef631",
+  //     codigoNacional: 22222222,
+  //     divNum: 33333,
+  //     marca: "Audi",
+  //     modelo: "A4",
+  //     anio: 2019,
+  //     color: "gris",
+  //     tipo: "Sedan",
+  //     combustible: "diesel",
+  //     numeroMotor: "MN67890",
+  //     numeroChasis: "EDCBA54321",
+  //     ciRut: "mno987654",
+  //     empadronado: "2024-05-01T12:34:56.789Z",
+  //     emitido: "2024-05-01T12:34:56.789Z",
+  //   },
+  //   {
+  //     id: 7,
+  //     matricula: "PQR321",
+  //     padron: "9GhU863Ef6391",
+  //     codigoNacional: 33333333,
+  //     divNum: 44444,
+  //     marca: "Kia",
+  //     modelo: "Rio",
+  //     anio: 2016,
+  //     color: "azul",
+  //     tipo: "Hatchback",
+  //     combustible: "gasolina",
+  //     numeroMotor: "PQ67890",
+  //     numeroChasis: "54321FEDC",
+  //     ciRut: "pqr123456",
+  //     empadronado: "2024-05-01T12:34:56.789Z",
+  //     emitido: "2024-05-01T12:34:56.789Z",
+  //   },
+  //   {
+  //     id: 8,
+  //     matricula: "STU987",
+  //     padron: "GhU863Ef63914",
+  //     codigoNacional: 44444444,
+  //     divNum: 55555,
+  //     marca: "Hyundai",
+  //     modelo: "Elantra",
+  //     anio: 2021,
+  //     color: "blanco",
+  //     tipo: "Sedan",
+  //     combustible: "gasolina",
+  //     numeroMotor: "STU67890",
+  //     numeroChasis: "54321GFED",
+  //     ciRut: "stu987654",
+  //     empadronado: "2024-05-01T12:34:56.789Z",
+  //     emitido: "2024-05-01T12:34:56.789Z",
+  //   },
+  //   {
+  //     id: 9,
+  //     matricula: "VWX654",
+  //     padron: "Ef6391GhU8639",
+  //     codigoNacional: 55555555,
+  //     divNum: 66666,
+  //     marca: "Mazda",
+  //     modelo: "3",
+  //     anio: 2020,
+  //     color: "rojo",
+  //     tipo: "Hatchback",
+  //     combustible: "diesel",
+  //     numeroMotor: "VW67890",
+  //     numeroChasis: "54321VUTS",
+  //     ciRut: "vwx123456",
+  //     empadronado: "2024-05-01T12:34:56.789Z",
+  //     emitido: "2024-05-01T12:34:56.789Z",
+  //   },
+  //   {
+  //     id: 10,
+  //     matricula: "YZA987",
+  //     padron: "F6391GhU863E",
+  //     codigoNacional: 66666666,
+  //     divNum: 77777,
+  //     marca: "Subaru",
+  //     modelo: "Impreza",
+  //     anio: 2018,
+  //     color: "gris",
+  //     tipo: "Sedan",
+  //     combustible: "gasolina",
+  //     numeroMotor: "YZ67890",
+  //     numeroChasis: "54321UTSR",
+  //     ciRut: "yza987654",
+  //     empadronado: "2024-05-01T12:34:56.789Z",
+  //     emitido: "2024-05-01T12:34:56.789Z",
+  //   },
+  //   {
+  //     id: 11,
+  //     matricula: "LAL2367",
+  //     padron: "Ef6391GhU863",
+  //     codigoNacional: 76528123,
+  //     divNum: 625172,
+  //     marca: "Volswagen",
+  //     modelo: "Vento",
+  //     anio: 2020,
+  //     color: "blanco",
+  //     tipo: "Sedan",
+  //     combustible: "nafta",
+  //     numeroMotor: "37781jd12",
+  //     numeroChasis: "65128712das",
+  //     ciRut: "gyfw7792123",
+  //     empadronado: "2024-05-01T12:34:56.789Z",
+  //     emitido: "2024-05-01T12:34:56.789Z",
+  //   },
+  //   {
+  //     id: 12,
+  //     matricula: "LAL 5432",
+  //     padron: "Ef6391GhU863",
+  //     codigoNacional: 76528123,
+  //     divNum: 625172,
+  //     marca: "Volswagen",
+  //     modelo: "Hatch",
+  //     anio: 2020,
+  //     color: "blanco",
+  //     tipo: "Sedan",
+  //     combustible: "nafta",
+  //     numeroMotor: "37781jd12",
+  //     numeroChasis: "65128712das",
+  //     ciRut: "gyfw7792123",
+  //     empadronado: "2024-05-01T12:34:56.789Z",
+  //     emitido: "2024-05-01T12:34:56.789Z",
+  //   },
+  //   {
+  //     id: 13,
+  //     matricula: "LAL 8829",
+  //     padron: "Ef6391GhU863",
+  //     codigoNacional: 76528123,
+  //     divNum: 625172,
+  //     marca: "Toyota",
+  //     modelo: "Hailuz",
+  //     anio: 2020,
+  //     color: "blanco",
+  //     tipo: "Sedan",
+  //     combustible: "nafta",
+  //     numeroMotor: "37781jd12",
+  //     numeroChasis: "65128712das",
+  //     ciRut: "gyfw7792123",
+  //     empadronado: "2024-05-01T12:34:56.789Z",
+  //     emitido: "2024-05-01T12:34:56.789Z",
+  //   },
+  //   // Aquí podrías agregar más objetos si lo necesitas
+  // ];
+
+  const objetos = getVehiculos();
 
   // const itemsPerPage = 7; // Cantidad de elementos por página
   // Define diferentes valores de itemsPerPage según el tamaño de la pantalla
@@ -265,6 +271,8 @@ const Page = () => {
   const [filtroAnio, setFiltroAnio] = useState("");
   const [ocultarFiltro, setOcultarFiltro] = useState(false);
   const [ocultarFiltroM, setOcultarFiltroM] = useState(false);
+  // VEHICULO SELECCIONADO PARA ELIMINAR
+  const [selectedVehiculo, setselectedVehiculo] = useState(null);
 
   // MOBILE
   const [filtroMatriculaM, setFiltroMatriculaM] = useState("");
@@ -308,13 +316,96 @@ const Page = () => {
     });
   }, [objetos, filtroMatriculaM, filtroMarcaM]);
 
+  const eliminarVehiculo = async () => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3000/api/vehiculo/${selectedVehiculo.id}`
+      );
+      console.log("RESPONSE: ", response);
+      console.log(
+        "LA RESPONSE STATUSCODEVALUE: ",
+        response.data.statusCodeValue
+      );
+      return response.status;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDeleteConfirmation = async () => {
+    try {
+      const result = await Swal.fire({
+        title: `¿Estás seguro?\nEliminar Vehículo: ${
+          selectedVehiculo ? selectedVehiculo.matricula : "errorXD"
+        }`,
+        text: "Se Eliminara el Vehículo",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, eliminarlo",
+        cancelButtonText: "No, cancelar",
+        confirmButtonColor: "#14146c",
+        cancelButtonColor: "#EF0C0C",
+        reverseButtons: true,
+
+        didClose: () => {
+          // Restablecer selectedClient al cerrar el modal
+          setselectedVehiculo(null);
+        },
+      });
+      if (result.isConfirmed) {
+        const resultado = await eliminarVehiculo();
+        console.log("EL RESULTADO: ", resultado);
+        setselectedVehiculo(null);
+        if (resultado === 200) {
+          Swal.fire({
+            title: "¡Eliminado!",
+            text: `El Vehículo ${
+              selectedVehiculo ? selectedVehiculo.matricula : ""
+            } ha sido eliminado.`,
+            icon: "success",
+          });
+          const recargarPagina = setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+        } else if (resultado === 405) {
+          Swal.fire({
+            title: "DATOS EN DB ",
+            text: `Existen Registros de este Vehículo en Alquileres, No es posible eliminar.`,
+            icon: "error",
+          });
+        } else {
+          Swal.fire({
+            title: "ALGO SALIO MAL ",
+            text: `El servidor fallo.`,
+            icon: "error",
+          });
+        }
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        setSelectedClient(null);
+        Swal.fire({
+          title: "Cancelado",
+          text: "El Vehículo está a salvo :)",
+          icon: "error",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (selectedVehiculo != null) {
+      handleDeleteConfirmation();
+    }
+  }, [selectedVehiculo]);
+
   return (
     <LayoutSistema>
       <div className="px-4 py-8 ">
         <div className="flex gap-x-10 gap-y-3 md:gap-y-0 flex-col md:flex-row items-center justify-center md:items-start md:justify-start">
           <h3 className="text-3xl font-bold mb-4">Lista de Vehículos</h3>
 
-          <Link href="#">
+          <Link href="/SistemaWeb/vehiculos/ingresarVehiculo">
             <button className="flex gap-x-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               <FaPlus className="size-5" />
               Agregar Vehículo
@@ -432,7 +523,9 @@ const Page = () => {
                   <td className="border border-gray-800 px-4 py-2">
                     <div className="flex items-center justify-center pt-2 gap-6">
                       <div>
-                        <Link href={`/SistemaWeb/vehiculos/${objeto.id}`}>
+                        <Link
+                          href={`/SistemaWeb/vehiculos/infoVehiculo/${objeto.id}`}
+                        >
                           <FaEye
                             size={25}
                             className="fill-sky-400 cursor-pointer"
@@ -440,13 +533,18 @@ const Page = () => {
                         </Link>
                       </div>
                       <div>
-                        <BsPencilSquare
-                          size={25}
-                          className="fill-orange-500 cursor-pointer"
-                        />
+                        <Link
+                          href={`/SistemaWeb/vehiculos/editarVehiculo/${objeto.id}`}
+                        >
+                          <BsPencilSquare
+                            size={25}
+                            className="fill-orange-500 cursor-pointer"
+                          />
+                        </Link>
                       </div>
                       <div>
                         <MdDelete
+                          onClick={() => setselectedVehiculo(objeto)}
                           size={25}
                           className="fill-red-600 cursor-pointer"
                         />

@@ -19,6 +19,15 @@ const HeaderS = () => {
           />
         </div>
         <div className="hidden md:flex items-center gap-5 pr-10">
+          <Link href={"/SistemaWeb/"}>Inicio</Link>
+          <Link href={"#"}>Empleados</Link>
+          <Link href={"/SistemaWeb/vehiculos"}>Vehiculos</Link>
+          <Link href={"#"}>Clientes</Link>
+          <Link href={"#"}>Sucursales</Link>
+          <Link href={"#"}>Gastos</Link>
+          <Link href={"#"}>Alquileres</Link>
+        </div>
+        <div className="hidden md:flex items-center gap-5 pr-10">
           <Link href={"#"}>Sucursal</Link>
           <Link href={"#"}>Empleado</Link>
           <Link href={"#"}>Cerrar Sesión</Link>
@@ -45,8 +54,8 @@ const HeaderS = () => {
            xl:flex-row xl:w-max xl:gap-x-8 xl:h-max xl:bg-transparent xl:pb-0 transition-all duration-150
           text-center xl:text-left uppercase text-sm xl:text-[15px] xl:normal-case text-white`}
       >
-        <Link href={"#"}>Inicio</Link>
-        <Link href={"#"}>Vehículos</Link>
+        <Link href={"/SistemaWeb/"}>Inicio</Link>
+        <Link href={"/SistemaWeb/vehiculos"}>Vehiculos</Link>
         <Link href={"#"}>Clientes</Link>
         <Link href={"#"}>Sucursales</Link>
         <Link href={"#"}>Alquileres</Link>
