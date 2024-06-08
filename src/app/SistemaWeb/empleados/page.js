@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import getVehiculos from "@/app/components/GetData/getVehiculos";
 import "sweetalert2/src/sweetalert2.scss";
+import getEmpleados from "@/app/components/GetData/getEmpleados";
 
 const Page = () => {
   // const objetos = [
@@ -249,39 +250,54 @@ const Page = () => {
   //   // Aquí podrías agregar más objetos si lo necesitas
   // ];
 
-  const objetos = getVehiculos();
+  const objetos = getEmpleados();
+
+  const objeto = {
+    mail: "Joaquing@gmail.com",
+    password: "abc123456",
+    cedula: 74839201,
+    nombre: "Joaquin",
+    apellido: "Colman",
+    sucursalId: 2,
+    rol: "empleado",
+  };
 
   // const itemsPerPage = 7; // Cantidad de elementos por página
   // Define diferentes valores de itemsPerPage según el tamaño de la pantalla
-  const itemsPerPage = useMemo(() => {
-    if (screen.width >= 1480) {
-      return 13; // Por ejemplo, muestra 10 elementos por página en pantallas extra grandes (xl)
-    } else if (screen.width >= 768) {
-      return 5; // Por ejemplo, muestra 7 elementos por página en pantallas medianas (md)
-    } else {
-      return 5; // Por ejemplo, muestra 5 elementos por página en pantallas pequeñas (sm)
-    }
-  }, []);
+  //   const itemsPerPage = useMemo(() => {
+  //     if (screen.width >= 1480) {
+  //       return 13; // Por ejemplo, muestra 10 elementos por página en pantallas extra grandes (xl)
+  //     } else if (screen.width >= 768) {
+  //       return 5; // Por ejemplo, muestra 7 elementos por página en pantallas medianas (md)
+  //     } else {
+  //       return 5; // Por ejemplo, muestra 5 elementos por página en pantallas pequeñas (sm)
+  //     }
+  //   }, []);
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const [filtroMatricula, setFiltroMatricula] = useState("");
-  const [filtroMarca, setFiltroMarca] = useState("");
-  const [filtroModelo, setFiltroModelo] = useState("");
-  const [filtroAnio, setFiltroAnio] = useState("");
-  const [ocultarFiltro, setOcultarFiltro] = useState(false);
-  const [ocultarFiltroM, setOcultarFiltroM] = useState(false);
-  // VEHICULO SELECCIONADO PARA ELIMINAR
-  const [selectedVehiculo, setselectedVehiculo] = useState(null);
+  const [filtroNombre, setfiltroNombre] = useState("");
+  const [filtroApellido, setfiltroApellido] = useState("");
+  const [filtroSucursal, setfiltroSucursal] = useState("");
+  const [filtroMail, setfiltroMail] = useState("");
+  const [filtroCedula, setfiltroCedula] = useState("");
 
-  // MOBILE
-  const [filtroMatriculaM, setFiltroMatriculaM] = useState("");
-  const [filtroMarcaM, setFiltroMarcaM] = useState("");
+  const [ocultarFiltro, setOcultarFiltro] = useState(true);
+  const [ocultarFiltroM, setOcultarFiltroM] = useState(false);
+  //   // VEHICULO SELECCIONADO PARA ELIMINAR
+  //   const [selectedVehiculo, setselectedVehiculo] = useState(null);
+  const [selectedEmpleado, setselectedEmpleado] = useState(null);
+
+  //   // MOBILE
+  //   const [filtroMatriculaM, setFiltroMatriculaM] = useState("");
+  //   const [filtroMarcaM, setFiltroMarcaM] = useState("");
+  const [filtroApellidoM, setfiltroApellidoM] = useState("");
+  const [filtroSucursalM, setfiltroSucursalM] = useState("");
 
   // Calcula el índice del primer y último elemento de la página actual
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  // const currentItems = objetos.slice(indexOfFirstItem, indexOfLastItem);
+  //   const indexOfLastItem = currentPage * itemsPerPage;
+  //   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  //   const currentItems = objetos.slice(indexOfFirstItem, indexOfLastItem);
 
   // Cambia a la página siguiente
   const nextPage = () => {
@@ -295,31 +311,32 @@ const Page = () => {
 
   const filteredItems = objetos.filter((objeto) => {
     return (
-      objeto.matricula.toLowerCase().includes(filtroMatricula.toLowerCase()) &&
-      objeto.marca.toLowerCase().includes(filtroMarca.toLowerCase()) &&
-      objeto.modelo.toLowerCase().includes(filtroModelo.toLowerCase()) &&
-      objeto.anio.toString().includes(filtroAnio)
+      objeto.nombre.toLowerCase().includes(filtroNombre.toLowerCase()) &&
+      objeto.apellido.toLowerCase().includes(filtroApellido.toLowerCase()) &&
+      objeto.sucursalId.toString().includes(filtroSucursal) &&
+      objeto.mail.toLowerCase().includes(filtroMail.toLowerCase()) &&
+      objeto.cedula.toString().includes(filtroCedula)
     );
   });
-  const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
+  //   const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
 
-  // MOBILE
+  //   MOBILE
 
   const filteredItemsM = useMemo(() => {
     return objetos.filter((objeto) => {
       return (
-        objeto.matricula
+        objeto.apellido
           .toLowerCase()
-          .startsWith(filtroMatriculaM.toLowerCase()) &&
-        objeto.marca.toLowerCase().startsWith(filtroMarcaM.toLowerCase())
+          .startsWith(filtroApellidoM.toLowerCase()) &&
+        objeto.sucursalId.toString().startsWith(filtroSucursalM)
       );
     });
-  }, [objetos, filtroMatriculaM, filtroMarcaM]);
+  }, [objetos, filtroApellidoM, filtroSucursalM]);
 
-  const eliminarVehiculo = async () => {
+  const eliminarEmpleado = async () => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/vehiculo/${selectedVehiculo.id}`
+        `http://localhost:3000/api/empleado/${selectedEmpleado.id}`
       );
       console.log("RESPONSE: ", response);
       console.log(
@@ -335,10 +352,10 @@ const Page = () => {
   const handleDeleteConfirmation = async () => {
     try {
       const result = await Swal.fire({
-        title: `¿Estás seguro?\nEliminar Vehículo: ${
-          selectedVehiculo ? selectedVehiculo.matricula : "errorXD"
+        title: `¿Estás seguro?\nEliminar Empleado: ${
+          selectedEmpleado ? selectedEmpleado.nombre : "errorXD"
         }`,
-        text: "Se Eliminara el Vehículo",
+        text: "Se Eliminara el empleado",
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Sí, eliminarlo",
@@ -349,18 +366,18 @@ const Page = () => {
 
         didClose: () => {
           // Restablecer selectedClient al cerrar el modal
-          setselectedVehiculo(null);
+          setselectedEmpleado(null);
         },
       });
       if (result.isConfirmed) {
-        const resultado = await eliminarVehiculo();
+        const resultado = await eliminarEmpleado();
         console.log("EL RESULTADO: ", resultado);
-        setselectedVehiculo(null);
+        setselectedEmpleado(null);
         if (resultado === 200) {
           Swal.fire({
             title: "¡Eliminado!",
-            text: `El Vehículo ${
-              selectedVehiculo ? selectedVehiculo.matricula : ""
+            text: `El Empleado ${
+              selectedEmpleado ? selectedEmpleado.nombre : "errorXD"
             } ha sido eliminado.`,
             icon: "success",
           });
@@ -370,7 +387,7 @@ const Page = () => {
         } else if (resultado === 405) {
           Swal.fire({
             title: "DATOS EN DB ",
-            text: `Existen Registros de este Vehículo en Alquileres, No es posible eliminar.`,
+            text: `Existen Registros de este Empleado en Alquileres, No es posible eliminar.`,
             icon: "error",
           });
         } else {
@@ -384,7 +401,7 @@ const Page = () => {
         setSelectedClient(null);
         Swal.fire({
           title: "Cancelado",
-          text: "El Vehículo está a salvo :)",
+          text: "El Empleado está a salvo :)",
           icon: "error",
         });
       }
@@ -394,21 +411,21 @@ const Page = () => {
   };
 
   useEffect(() => {
-    if (selectedVehiculo != null) {
+    if (selectedEmpleado != null) {
       handleDeleteConfirmation();
     }
-  }, [selectedVehiculo]);
+  }, [selectedEmpleado]);
 
   return (
     <LayoutSistema>
       <div className="px-4 py-8 ">
         <div className="flex gap-x-10 gap-y-3 md:gap-y-0 flex-col md:flex-row items-center justify-center md:items-start md:justify-start">
-          <h3 className="text-3xl font-bold mb-4">Lista de Vehículos</h3>
+          <h3 className="text-3xl font-bold mb-4">Lista de Empleados</h3>
 
-          <Link href="/SistemaWeb/vehiculos/ingresarVehiculo">
+          <Link href="/SistemaWeb/empleados/ingresarEmpleado">
             <button className="flex gap-x-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               <FaPlus className="size-5" />
-              Agregar Vehículo
+              Agregar Empleado
             </button>
           </Link>
           <div className="hidden md:flex">
@@ -434,46 +451,56 @@ const Page = () => {
           <div
             className={` ${
               ocultarFiltro ? "hidden" : "flex"
-            } flex-col md:flex-row  gap-5 p-5 `}
+            } flex-col flex-wrap md:flex-row  gap-5 p-5 `}
           >
             <div className="flex flex-col ">
-              <label>Matricula</label>
+              <label>Nombre</label>
               <input
                 className="p-3 rounded-md"
                 type="text"
-                placeholder="Filtrar por Matrícula"
-                value={filtroMatricula}
-                onChange={(e) => setFiltroMatricula(e.target.value)}
+                placeholder="Filtrar por Nombre"
+                value={filtroNombre}
+                onChange={(e) => setfiltroNombre(e.target.value)}
               />
             </div>
             <div className="flex flex-col ">
-              <label>Marca</label>
+              <label>Apellido</label>
               <input
                 className="p-3 rounded-md"
                 type="text"
-                placeholder="Filtrar por Marca"
-                value={filtroMarca}
-                onChange={(e) => setFiltroMarca(e.target.value)}
+                placeholder="Filtrar por Apellido"
+                value={filtroApellido}
+                onChange={(e) => setfiltroApellido(e.target.value)}
               />
             </div>
             <div className="flex flex-col ">
-              <label>Modelo</label>
+              <label>Sucursal</label>
               <input
                 className="p-3 rounded-md"
                 type="text"
-                placeholder="Filtrar por Modelo"
-                value={filtroModelo}
-                onChange={(e) => setFiltroModelo(e.target.value)}
+                placeholder="Filtrar por Sucursal"
+                value={filtroSucursal}
+                onChange={(e) => setfiltroSucursal(e.target.value)}
               />
             </div>
             <div className="flex flex-col ">
-              <label>Año</label>
+              <label>Cédula</label>
               <input
                 className="p-3 rounded-md"
                 type="text"
-                placeholder="Filtrar por Año"
-                value={filtroAnio}
-                onChange={(e) => setFiltroAnio(e.target.value)}
+                placeholder="Filtrar por Cédula"
+                value={filtroCedula}
+                onChange={(e) => setfiltroCedula(e.target.value)}
+              />
+            </div>
+            <div className="flex flex-col ">
+              <label>Email</label>
+              <input
+                className="p-3 rounded-md"
+                type="text"
+                placeholder="Filtrar por Email"
+                value={filtroMail}
+                onChange={(e) => setfiltroMail(e.target.value)}
               />
             </div>
           </div>
@@ -482,49 +509,39 @@ const Page = () => {
           <table className=" border-collapse border border-gray-800 bg-white w-full">
             <thead>
               <tr className="text-2xl">
-                <th className="border border-gray-800 px-4 py-2">Matrícula</th>
-                <th className="border border-gray-800 px-4 py-2">Marca</th>
-                <th className="border border-gray-800 px-4 py-2 hidden md:table-cell">
-                  Modelo
-                </th>
-                <th className="border border-gray-800 px-4 py-2 hidden md:table-cell">
-                  Año
-                </th>
-                <th className="border border-gray-800 px-4 py-2 hidden xl:table-cell">
-                  Color
-                </th>
-                <th className="border border-gray-800 px-4 py-2 hidden xl:table-cell">
-                  Tipo
-                </th>
+                <th className="border border-gray-800 px-4 py-2">Nombre</th>
+                <th className="border border-gray-800 px-4 py-2">Apellido</th>
+                <th className="border border-gray-800 px-4 py-2 ">Sucursal</th>
+                <th className="border border-gray-800 px-4 py-2 ">Cédula</th>
+                <th className="border border-gray-800 px-4 py-2 ">Email</th>
+
                 <th className="border border-gray-800 px-4 py-2">Opciones</th>
               </tr>
             </thead>
             <tbody>
-              {currentItems.map((objeto, index) => (
+              {filteredItems.map((objeto, index) => (
                 <tr key={index}>
                   <td className="border border-gray-800 px-4 py-2">
-                    {objeto.matricula}
+                    {objeto.nombre}
                   </td>
                   <td className="border border-gray-800 px-4 py-2">
-                    {objeto.marca}
+                    {objeto.apellido}
                   </td>
                   <td className="border border-gray-800 px-4 py-2 hidden md:table-cell">
-                    {objeto.modelo}
+                    {objeto.sucursalId}
                   </td>
                   <td className="border border-gray-800 px-4 py-2 hidden md:table-cell">
-                    {objeto.anio}
+                    {objeto.cedula}
                   </td>
-                  <td className="border border-gray-800 px-4 py-2 hidden xl:table-cell">
-                    {objeto.color}
+                  <td className="border border-gray-800 px-4 py-2 hidden md:table-cell">
+                    {objeto.mail}
                   </td>
-                  <td className="border border-gray-800 px-4 py-2 hidden xl:table-cell">
-                    {objeto.tipo}
-                  </td>
+
                   <td className="border border-gray-800 px-4 py-2">
                     <div className="flex items-center justify-center pt-2 gap-6">
                       <div>
                         <Link
-                          href={`/SistemaWeb/vehiculos/infoVehiculo/${objeto.id}`}
+                          href={`/SistemaWeb/empleados/infoEmpleado/${objeto.id}`}
                         >
                           <FaEye
                             size={25}
@@ -534,7 +551,7 @@ const Page = () => {
                       </div>
                       <div>
                         <Link
-                          href={`/SistemaWeb/vehiculos/editarVehiculo/${objeto.id}`}
+                          href={`/SistemaWeb/empleados/editarEmpleado/${objeto.id}`}
                         >
                           <BsPencilSquare
                             size={25}
@@ -544,7 +561,7 @@ const Page = () => {
                       </div>
                       <div>
                         <MdDelete
-                          onClick={() => setselectedVehiculo(objeto)}
+                          onClick={() => setselectedEmpleado(objeto)}
                           size={25}
                           className="fill-red-600 cursor-pointer"
                         />
@@ -557,42 +574,44 @@ const Page = () => {
           </table>
         </div>
 
-        {/* MOBILE COMIENZA AQUI*/}
+        {/* MOBILE COMIENZA AQUI */}
         <div className="md:hidden">
           <div className="flex gap-3 mb-4 pt-3">
             <div className="flex flex-col">
-              <label>Matricula</label>
+              <label>Apellido</label>
               <div>
                 <input
                   className=" p-4 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                   type="text"
-                  placeholder="Filtrar Mat"
-                  value={filtroMatriculaM}
-                  onChange={(e) => setFiltroMatriculaM(e.target.value)}
+                  placeholder="Filtrar Apellido"
+                  value={filtroApellidoM}
+                  onChange={(e) => setfiltroApellidoM(e.target.value)}
                 />
               </div>
             </div>
             <div className="flex flex-col">
-              <label>Marca</label>
+              <label>Sucursal</label>
               <div>
                 <input
                   className=" p-4 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                   type="text"
-                  placeholder="Filtrar Marca"
-                  value={filtroMarcaM}
-                  onChange={(e) => setFiltroMarcaM(e.target.value)}
+                  placeholder="Filtrar Sucursal"
+                  value={filtroSucursalM}
+                  onChange={(e) => setfiltroSucursalM(e.target.value)}
                 />
               </div>
             </div>
           </div>
           <ul className="border border-azulfuerte rounded-md overflow-hidden">
             {filteredItemsM.map((objeto, index) => (
-              <Link href={`/SistemaWeb/vehiculos/infoVehiculo/${objeto.id}`}>
+              <Link href={`/SistemaWeb/empleados/infoEmpleado/${objeto.id}`}>
                 <div>
-                  <li key={index} className="border-b border-azulfuerte">
+                  <li key={objeto.id} className="border-b border-azulfuerte">
                     <div className="p-3">
-                      <p className="font-semibold">{objeto.matricula}</p>
-                      <p>{objeto.marca}</p>
+                      <p className="font-semibold">
+                        {objeto.nombre} {objeto.apellido}
+                      </p>
+                      <p>Sucursal: {objeto.sucursalId}</p>
                     </div>
                   </li>
                 </div>
@@ -607,7 +626,7 @@ const Page = () => {
         </div>
         {/* MOBILE TERMINA AQUI*/}
 
-        <div className=" hidden md:flex justify-between mt-4 ">
+        {/* <div className=" hidden md:flex justify-between mt-4 ">
           <button
             onClick={prevPage}
             disabled={currentPage === 1}
@@ -622,7 +641,7 @@ const Page = () => {
           >
             Siguiente
           </button>
-        </div>
+        </div> */}
       </div>
     </LayoutSistema>
   );

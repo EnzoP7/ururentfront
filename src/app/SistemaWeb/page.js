@@ -1,13 +1,59 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import HeaderS from "../components/Sistema/Header";
 import { PiCarSimpleBold } from "react-icons/pi";
 import { FaUser, FaRegBuilding, FaUserTie } from "react-icons/fa";
 import { IoKey, IoNewspaperOutline } from "react-icons/io5";
 import LayoutSistema from "./layoutSistema";
 
+import useUserInfoAndToken from "../login/getUserInfoAndToken";
+
 const page = () => {
+  const {
+    Token,
+    Empleado,
+    EmpleadoId,
+    EmpleadoNombre,
+    EmpleadoApellido,
+    EmpleadoRol,
+    EmpleadoSucursalId,
+    EmpleadoMail,
+    EmpleadoCedula,
+  } = useUserInfoAndToken();
+  console.log(
+    Token,
+    Empleado,
+    EmpleadoId,
+    EmpleadoNombre,
+    EmpleadoApellido,
+    EmpleadoRol,
+    EmpleadoSucursalId,
+    EmpleadoMail,
+    EmpleadoCedula
+  );
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   console.log("Token from localStorage:", token);
+  //   const Empleado = localStorage.getItem("empleado");
+  //   const EmpleadoNombre = localStorage.getItem("empleadoNombre");
+  //   const EmpleadoApellido = localStorage.getItem("empleadoApellido");
+  //   const EmpleadoId = localStorage.getItem("empleadoId");
+  //   const EmpleadoRol = localStorage.getItem("empleadoRol");
+  //   const EmpleadoSucursalId = localStorage.getItem("empleadoSucursalId");
+
+  //   console.log(
+  //     Empleado,
+  //     EmpleadoId,
+  //     EmpleadoNombre,
+  //     EmpleadoApellido,
+  //     EmpleadoRol,
+  //     EmpleadoSucursalId
+  //   );
+  // }, []);
+
   return (
     // <div className="h-screen">
     //   <HeaderS />
@@ -103,7 +149,7 @@ const page = () => {
               <h3 className="md:text-xl xl:text-3xl">Informes</h3>
             </div>
           </Link>
-          <Link href={"#"}>
+          <Link href={"/SistemaWeb/empleados"}>
             <div className="flex flex-col items-center justify-center bg-azul py-5 px-10 md:py-5 md:px-16 xl:py-10 xl:px-20  hover:bg-azulfuerte rounded-lg cursor-pointer">
               <FaUserTie className="size-[50px] xl:size-[100px] md:size-[60px] " />
               <h3 className="md:text-xl xl:text-3xl">Empleados</h3>

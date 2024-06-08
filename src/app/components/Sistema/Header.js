@@ -3,9 +3,33 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { BiMenuAltRight, BiX } from "react-icons/bi";
+import useUserInfoAndToken from "@/app/login/getUserInfoAndToken";
 
 const HeaderS = () => {
   const [nav, setNav] = useState(false);
+
+  const {
+    Token,
+    Empleado,
+    EmpleadoId,
+    EmpleadoNombre,
+    EmpleadoApellido,
+    EmpleadoRol,
+    EmpleadoSucursalId,
+    EmpleadoMail,
+    EmpleadoCedula,
+  } = useUserInfoAndToken();
+  console.log(
+    Token,
+    Empleado,
+    EmpleadoId,
+    EmpleadoNombre,
+    EmpleadoApellido,
+    EmpleadoRol,
+    EmpleadoSucursalId,
+    EmpleadoMail,
+    EmpleadoCedula
+  );
   return (
     <div>
       <div className="bg-azul flex items-center justify-between text-white py-3 border-b-4 border-amarillo">
@@ -20,7 +44,7 @@ const HeaderS = () => {
         </div>
         <div className="hidden md:flex items-center gap-5 pr-10">
           <Link href={"/SistemaWeb/"}>Inicio</Link>
-          <Link href={"#"}>Empleados</Link>
+          <Link href={"/SistemaWeb/empleados"}>Empleados</Link>
           <Link href={"/SistemaWeb/vehiculos"}>Vehiculos</Link>
           <Link href={"#"}>Clientes</Link>
           <Link href={"#"}>Sucursales</Link>
@@ -28,8 +52,10 @@ const HeaderS = () => {
           <Link href={"#"}>Alquileres</Link>
         </div>
         <div className="hidden md:flex items-center gap-5 pr-10">
-          <Link href={"#"}>Sucursal</Link>
-          <Link href={"#"}>Empleado</Link>
+          <Link href={"#"}>Sucursal:{EmpleadoSucursalId}</Link>
+          <Link href={"#"}>
+            {EmpleadoNombre} {EmpleadoApellido}
+          </Link>
           <Link href={"#"}>Cerrar Sesión</Link>
         </div>
 
