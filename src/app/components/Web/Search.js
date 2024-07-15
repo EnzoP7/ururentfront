@@ -30,7 +30,7 @@ const Search = () => {
                 : `btn btn-lg btn-accent xl:w-[184px]`
             }  `}
           >
-            Buscar
+            Consultar
           </button>
         </div>
       </div>

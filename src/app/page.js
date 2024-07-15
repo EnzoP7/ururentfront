@@ -18,7 +18,7 @@ export default function Home() {
       <Cars />
       <About />
       <PreguntasFrecuentes />
-      <div className="xl:hidden md:pt-0 md:mb-0 pt-40 mb-40">
+      <div className=" md:pt-0 md:mb-0 sm:pt-0 pt-40 mb-40">
         <Condiciones />
       </div>
       <div className="mt-40 xl:mt-0">

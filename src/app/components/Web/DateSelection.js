@@ -21,7 +21,7 @@ const DateSelection = () => {
   ]);
 
   return (
-    <Menu as="div" className="w-full h-full flex xl:flex-row">
+    <Menu as="div" className="w-full h-full flex xl:flex-row z-10">
       <div className="relative flex-1">
         <Menu.Button className="dropdown-btn w-full h-full flex flex-col justify-center items-center xl:items-start xl:pl-8">
           <div className="flex flex-col xl:flex-row items-center xl:gap-x-2 gap-y-2 xl:gap-y-0">

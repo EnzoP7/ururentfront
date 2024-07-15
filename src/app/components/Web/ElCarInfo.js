@@ -7,6 +7,7 @@ import LocationSelection from "./LocationSelection";
 import DateSelection from "./DateSelection";
 import HoursSelection from "./HoursSelection";
 import InfoPersonal from "./InfoPersonal";
+import IniciarReserva from "./IniciarReserva";
 
 const ElCarInfo = ({ car }) => {
   console.log({ car });
@@ -48,52 +49,95 @@ const ElCarInfo = ({ car }) => {
   return (
     <>
       <SecondHeader />
-      <section className="h-full  pb-10 mx-auto px-10">
-        <div className="md:pt-[180px] pt-[130px] ">
-          <h3 className="h3 font-bold">
+      <section className="h-full pb-10 mx-auto px-6 md:px-10 max-w-screen-xl">
+        <div className="md:pt-[180px] pt-[130px]">
+          <h3 className="text-4xl font-bold">
             {name} {type} O Similar
           </h3>
         </div>
 
-        <div className="flex  gap-x-32 md:flex-row flex-col">
+        <div className="flex gap-x-12 md:flex-row flex-col mt-8">
           <div>
             <Image
-              className="rounded-lg"
+              className="rounded-lg shadow-lg"
               src={image}
               width={750}
               height={500}
               alt="Imagen Auto"
             />
           </div>
-          <div className="flex flex-col pt-10">
+          {/* <div className="flex flex-col pt-10">
             <div>
-              <h3 className="uppercase text-2xl md:h3 font-bold ">
-                DESCRIPCIÓN DEL VEHÍCULO
+              <h3 className="uppercase text-2xl font-bold">
+                Descripción del Vehículo
               </h3>
-              <h3 className="uppercase pt-3">Precio por dia U$D {price}</h3>
-              <ul className="gap-3">
-                <li className="pt-4">Pasajeros: {pasajeros}</li>
-                <li className="pt-4">Puertas: {puertas}</li>
-                <li className="pt-4">Baúl: {baul}</li>
-                <li className="pt-4">Motor: {motor}</li>
-                <li className="pt-4">Combustible: {combustible}</li>
-                <li className="pt-4">Rendimiento: {rendimiento}</li>
-                <li className="pt-4">Dirección: {direccion}</li>
-                <li className="pt-4">Radio: {radio}</li>
-                <li className="pt-4">
-                  Aire Acondicionado: {aire_Acondicionado}
+              <h3 className="uppercase pt-3 text-lg">
+                Precio por día: U$D {price}
+              </h3>
+              <ul className="gap-3 mt-4 space-y-3 text-lg">
+                <li>Pasajeros: {pasajeros}</li>
+                <li>Puertas: {puertas}</li>
+                <li>Baúl: {baul}</li>
+                <li>Motor: {motor}</li>
+                <li>Combustible: {combustible}</li>
+                <li>Rendimiento: {rendimiento}</li>
+                <li>Dirección: {direccion}</li>
+                <li>Radio: {radio}</li>
+                <li>Aire Acondicionado: {aire_Acondicionado}</li>
+              </ul>
+            </div>
+          </div> */}
+
+          <div className="flex flex-col pt-10 sm:pt-0">
+            <div className="bg-white shadow-lg rounded-lg p-8 max-w-2xl mx-auto">
+              <h3 className="uppercase text-3xl font-bold mb-4 text-center text-gray-800">
+                Descripción del Vehículo
+              </h3>
+              <h3 className="uppercase text-xl mb-6 text-center text-gray-700">
+                Precio por día: U$D {price}
+              </h3>
+              <ul className="list-disc list-inside space-y-4 text-gray-700">
+                <li>
+                  <span className="font-semibold">Pasajeros:</span> {pasajeros}
+                </li>
+                <li>
+                  <span className="font-semibold">Puertas:</span> {puertas}
+                </li>
+                <li>
+                  <span className="font-semibold">Baúl:</span> {baul}
+                </li>
+                <li>
+                  <span className="font-semibold">Motor:</span> {motor}
+                </li>
+                <li>
+                  <span className="font-semibold">Combustible:</span>{" "}
+                  {combustible}
+                </li>
+                <li>
+                  <span className="font-semibold">Rendimiento:</span>{" "}
+                  {rendimiento}
+                </li>
+                <li>
+                  <span className="font-semibold">Dirección:</span> {direccion}
+                </li>
+                <li>
+                  <span className="font-semibold">Radio:</span> {radio}
+                </li>
+                <li>
+                  <span className="font-semibold">Aire Acondicionado:</span>{" "}
+                  {aire_Acondicionado}
                 </li>
               </ul>
             </div>
           </div>
         </div>
 
-        <div className="pt-8 md:pb-0 pb-5 h-screen">
-          <div className=" border-b-2 border-azulfuerte w-full">
-            <h3 className="md:h3 text-2xl font-bold">INICIAR RESERVA ONLINE</h3>
+        {/* <div className="pt-8">
+          <div className="border-b-2 border-azulfuerte w-full pb-4">
+            <h3 className="text-3xl font-bold">Iniciar Reserva Online</h3>
           </div>
-          <div className="w-full flex-col mt-5">
-            <div className="flex items-center justify-between p-3  bg-white rounded-sm text-azulfuerte">
+          <div className="w-full mt-5">
+            <div className="flex items-center justify-between p-3 bg-white rounded-sm text-azulfuerte shadow-md">
               <div>
                 <p>Fecha y Lugar</p>
               </div>
@@ -102,32 +146,34 @@ const ElCarInfo = ({ car }) => {
               </div>
             </div>
 
-            <div className="flex flex-col md:flex-row items-center justify-between pt-5">
+            <div className="flex flex-col md:flex-row items-center justify-between pt-5 gap-4">
               <LocationSelection />
               <DateSelection />
               <HoursSelection />
             </div>
-            <div className="flex items-center justify-between p-3 mt-5 bg-white rounded-sm text-azulfuerte">
+
+            <div className="flex items-center justify-between p-3 mt-5 bg-white rounded-sm text-azulfuerte shadow-md">
               <div>
-                <p>Informacion Personal</p>
+                <p>Información Personal</p>
               </div>
               <div>
                 <p>Paso 2/2</p>
               </div>
             </div>
 
-            <div className=" pt-5">
+            <div className="pt-5">
               <InfoPersonal />
             </div>
 
-            <div className="pt-5 pb-10  md:pb-0 w-fit">
-              {/* Boton de Reservar */}
-              <button className="btn btn-sm bg-azulfuerte p-3">
+            <div className="pt-5 pb-10 md:pb-0 w-fit mx-auto">
+              <button className="btn btn-sm bg-azulfuerte p-3 text-white rounded-md shadow-md hover:bg-azulfuerte-dark transition duration-200">
                 Solicitar Reserva
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
+
+        <IniciarReserva />
       </section>
 
       <Footer />

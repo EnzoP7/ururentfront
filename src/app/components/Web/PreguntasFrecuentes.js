@@ -74,19 +74,21 @@ const PreguntasFrecuentes = () => {
   };
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 gap-8 h-screen xl:h-[90vh] bg-[#b2b7c2]/10">
+    <section className="flex flex-col items-center min-h-screen xl:min-h-[90vh] bg-[#b2b7c2]/10">
       <motion.div
-        variants={fadeIn("right", 0.6)}
-        initial="hidden"
-        whileInView={"show"}
-        viewport={{ once: false, amount: 0.6 }}
-        className="max-w-3xl mx-auto py-8 xl:px-0 px-10"
+        // variants={fadeIn("right", 0.6)}
+        // initial="hidden"
+        // whileInView={"show"}
+        // viewport={{ once: false, amount: 0.6 }}
+        className="max-w-3xl mx-auto pt-8 xl:px-0 px-10"
       >
-        <h2 className="text-3xl font-bold mb-4">Preguntas Frecuentes</h2>
+        <h2 className="text-4xl text-center font-bold mb-4">
+          Preguntas Frecuentes
+        </h2>
         {faqs.map((faq, index) => (
           <div key={index} className="mb-4">
             <button
-              className="w-full text-left font-semibold focus:outline-none py-2"
+              className="w-full text-xl text-center font-semibold focus:outline-none py-2"
               onClick={() => toggleFaq(index)}
             >
               {faq.pregunta}
@@ -95,7 +97,7 @@ const PreguntasFrecuentes = () => {
           </div>
         ))}
       </motion.div>
-      <motion.div
+      {/* <motion.div
         variants={fadeIn("left", 0.6)}
         initial="hidden"
         whileInView={"show"}
@@ -153,7 +155,7 @@ const PreguntasFrecuentes = () => {
             adicionales no tiene cargo alguno.
           </li>
         </ul>
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 };
