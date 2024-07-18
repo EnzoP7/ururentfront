@@ -12,16 +12,6 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 
 const IniciarReserva = ({ vehiculoAAlquilar }) => {
-  // const [location, setLocation] = useState("Selecciona Ubicación");
-  // const [hour, setHour] = useState("10:00 AM");
-  // const [date, setDate] = useState([
-  //   {
-  //     startDate: new Date(),
-  //     endDate: null,
-  //     key: "selection",
-  //   },
-  // ]);
-
   const router = useRouter();
 
   const [laLocation, setLaLocation] = useState();

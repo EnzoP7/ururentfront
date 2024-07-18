@@ -3,8 +3,10 @@ import { SearchContext } from "../../context/search";
 import LocationSelection from "./LocationSelection";
 import DateSelection from "./DateSelection";
 import HoursSelection from "./HoursSelection";
+import { useRouter } from "next/navigation";
 
 const Search = () => {
+  const router = useRouter();
   const { searchActive } = useContext(SearchContext);
   return (
     <div
@@ -24,6 +26,7 @@ const Search = () => {
         <HoursSelection />
         <div className="xl:h-full flex items-center px-6 xl:px-0 xl:pr-3">
           <button
+            onClick={() => router.push("/Web/pagReserva")}
             className={`${
               searchActive
                 ? "btn btn-sm btn-accent xl:w-[164px]"

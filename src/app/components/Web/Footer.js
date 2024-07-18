@@ -28,78 +28,54 @@ const Footer = () => {
                 alt=""
               />
             </Link>
-            <div className="text-secondary">
+            {/* <div className="text-secondary">
               "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.
-            </div>
+            </div> */}
             <div className="flex flex-col gap-y-4 font-semibold pt-5">
               <div className="flex items-center gap-x-[10px]">
                 <FaPhone />
-                <div className="font-medium">(123) 456-7890</div>
+                <div className="font-medium">(+598) 98 542 542</div>
               </div>
               <div className="flex items-center gap-x-[10px]">
                 <FaEnvelope />
-                <div className="font-medium">office@carland.com</div>
+                <div className="font-medium">Info@ururent.com.uy</div>
               </div>
             </div>
           </div>
-          <div className="flex-1 flex flex-col xl:items-center">
-            <div>
-              <h3 className="h4 font-bold mb-8">Company</h3>
-              <ul className="flex flex-col gap-y-4 font-semibold">
-                <li>
-                  {" "}
-                  <a href="">New York</a>{" "}
-                </li>
-                <li>
-                  {" "}
-                  <a href="">Carrers</a>{" "}
-                </li>
-                <li>
-                  {" "}
-                  <a href="">Mobile</a>{" "}
-                </li>
-                <li>
-                  {" "}
-                  <a href="">Blog</a>{" "}
-                </li>
-                <li>
-                  {" "}
-                  <a href="">How we Work</a>{" "}
-                </li>
-              </ul>
-            </div>
-          </div>
+
           <div className="flex-1">
-            <h3 className="h4 font-bold mb-8">Working Hours</h3>
+            <h3 className="h4 font-bold mb-8">Horarios</h3>
             <div className="flex flex-col gap-y-4 ">
               <div className="flex gap-x-2">
-                <div className="text-secondary">Mon- Fri:</div>
+                <div className="text-secondary">Lun- Vie:</div>
                 <div className="font-semibold">09:00AM - 09:00PM</div>
               </div>
               <div className="flex gap-x-2">
-                <div className="text-secondary">Sat:</div>
+                <div className="text-secondary">Sab:</div>
                 <div className="font-semibold">09:00AM - 07:00PM</div>
               </div>
               <div className="flex gap-x-2">
-                <div className="text-secondary">Sun:</div>
-                <div className="font-semibold">Closed</div>
+                <div className="text-secondary">Dom:</div>
+                <div className="font-semibold">11:00AM - 05:00PM</div>
               </div>
             </div>
           </div>
           <div className="flex-1">
-            <h3 className="h4 font-bold mb-8">Newsletter</h3>
+            <h3 className="h4 font-bold mb-8">Recibir Notificaciónes</h3>
             <div className="mb-9 text-secondary">
-              "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
-              consectetur, adipisci velit..
+              "Mantente al tanto de promociones y noticias enviándonos tu
+              dirección de correo electrónico."
             </div>
             <form className="flex gap-x-2 h-14">
-              <input
-                type="text"
-                placeholder="Your email"
-                className="outline-none bg-white h-full border rounded-lg pl-4 focus:border-accent"
-              />
-              <button type="submit" className="btn btn-sm btn-accent w-24">
-                Submit
+              <button
+                type="submit"
+                className="btn btn-xl btn-accent w-full"
+                onClick={() =>
+                  (window.location.href =
+                    "mailto:enzopontet2003@gmail.com?subject=Interesado en recibir notificaciones y noticias")
+                }
+              >
+                Recibir Notificaciones
               </button>
             </form>
           </div>

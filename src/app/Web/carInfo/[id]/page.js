@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 
-import ElCarInfo from "../../../components/Web/ElCarInfo";
-import losCars from "../../../components/GetData/losCars";
+import losCars from "../../../data/losCars";
+import { InfoCar } from "../../../components/Web/InfoCar";
 
 const buscarVehiculo = (id) => {
   try {
@@ -20,7 +20,9 @@ export default function CarInfopage({ params }) {
 
   return (
     <>
-      <ElCarInfo car={car} />
+      {/* <InfoCar car={car} /> */}
+
+      <InfoCar car={car} />
     </>
   );
 }

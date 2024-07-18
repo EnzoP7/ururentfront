@@ -37,23 +37,37 @@ const About = () => {
               height={448}
             />
           </motion.div>
-          <div className="flex-1 flex items-center xl:justify-center">
-            <div className="xl:max-w-[517px]">
-              <motion.h2
-                variants={fadeIn("up", 0.4)}
-                initial="hidden"
-                whileInView={"show"}
-                viewport={{ once: false, amount: 0.6 }}
-                className="h2"
-              >
-                ¿Quienes Somos?
-              </motion.h2>
+          <div className="flex-1 flex items-center xl:justify-center ">
+            <div className="xl:max-w-[517px] -pl-4">
+              <div className="hidden sm:flex">
+                <motion.h2
+                  variants={fadeIn("up", 0.4)}
+                  initial="hidden"
+                  whileInView={"show"}
+                  viewport={{ once: false, amount: 0.6 }}
+                  className="h2"
+                >
+                  ¿Quienes Somos?
+                </motion.h2>
+              </div>
+
+              <div className="sm:hidden">
+                <motion.h2
+                  variants={fadeIn("up", 0.4)}
+                  initial="hidden"
+                  whileInView={"show"}
+                  viewport={{ once: false, amount: 0.6 }}
+                  className="text-3xl  font-bold mb-6"
+                >
+                  ¿Quienes Somos?
+                </motion.h2>
+              </div>
               <motion.p
                 variants={fadeIn("up", 0.6)}
                 initial="hidden"
                 whileInView={"show"}
                 viewport={{ once: false, amount: 0.6 }}
-                className="mb-[42px] max-w-md"
+                className="mb-[42px] max-w-lg"
               >
                 URURENT es una empresa nacional con más de 15 años en el rubro
                 alquiler de autos sin chófer, nuestra sede se encuentra en la
@@ -109,7 +123,7 @@ const About = () => {
                   </div>
                 </div>
 
-                <motion.button
+                {/* <motion.button
                   variants={fadeIn("up", 0.1)}
                   initial="hidden"
                   whileInView={"show"}
@@ -117,8 +131,8 @@ const About = () => {
                   className="hidden xl:block bg-accent hover:bg-accent-hover rounded-[10px] w-full h-16 uppercase
                  font-medium text-white tracking-[2px] text-[13px] max-w-[184px]"
                 >
-                  See all cars
-                </motion.button>
+                  Ver Mas
+                </motion.button> */}
               </motion.div>
             </div>
           </div>

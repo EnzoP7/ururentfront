@@ -151,7 +151,7 @@ const Header = () => {
           >
             Contacto
           </ScrollLink>
-          <Link href="/login" className="cursor-pointer">
+          <Link href="/" className="cursor-pointer">
             Iniciar Sesión
           </Link>
 

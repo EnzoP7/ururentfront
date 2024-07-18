@@ -21,7 +21,8 @@ const Cta = () => {
                 viewport={{ once: false, amount: 0.6 }}
                 className="h2"
               >
-                Download our App now and hit the road with ease
+                Llega a tu destino ideal con nosotros, explorando cada rincón de
+                Uruguay.
               </motion.h2>
               <motion.p
                 variants={fadeIn("right", 0.4)}
@@ -30,12 +31,13 @@ const Cta = () => {
                 viewport={{ once: false, amount: 0.6 }}
                 className="mb-10"
               >
-                "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
-                consectetur, adipisci velit..." "No hay nadie que ame el dolor
-                mismo, que lo busque, lo encuentre y lo quiera, simplemente
-                porque es el dolor."
+                "Ya sea un viaje corto o una aventura larga, estamos aquí para
+                acompañarte en cada kilómetro.Brindamos la mejor atención y el
+                servicio de alquiler de vehículos más destacado en todo el país.
+                Con nuestra experiencia y dedicación, garantizamos que tu viaje
+                será cómodo y sin preocupaciones."
               </motion.p>
-              <motion.div
+              {/* <motion.div
                 variants={fadeIn("right", 0.6)}
                 initial="hidden"
                 whileInView={"show"}
@@ -58,7 +60,7 @@ const Cta = () => {
                     alt=""
                   />
                 </button>
-              </motion.div>
+              </motion.div> */}
             </div>
           </div>
           <motion.div
@@ -69,9 +71,9 @@ const Cta = () => {
             className="flex-1 flex justify-center order-1 md:order-none"
           >
             <Image
-              src={"/images/cta/phone.svg"}
-              width={320}
-              height={640}
+              src={"/images/cta/ParaTesisMapaUrurent.svg"}
+              width={820}
+              height={840}
               alt=""
             />
           </motion.div>
