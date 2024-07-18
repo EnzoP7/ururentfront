@@ -1,13 +1,34 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 
-import LocationSelection from "./LocationSelection";
-import DateSelection from "./DateSelection";
 import HoursSelection from "./HoursSelection";
-import InfoPersonal from "./InfoPersonal";
 import { useForm } from "react-hook-form";
+import LocationSelection2 from "./LocationSelection2";
+import DateSelection2 from "./DateSelection2";
+import HoursSelection2 from "./HoursSelection2";
+import { Resend } from "resend";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
-const IniciarReserva = () => {
+const IniciarReserva = ({ vehiculoAAlquilar }) => {
+  // const [location, setLocation] = useState("Selecciona Ubicación");
+  // const [hour, setHour] = useState("10:00 AM");
+  // const [date, setDate] = useState([
+  //   {
+  //     startDate: new Date(),
+  //     endDate: null,
+  //     key: "selection",
+  //   },
+  // ]);
+
+  const router = useRouter();
+
+  const [laLocation, setLaLocation] = useState();
+  const [laDateSelection, setlaDateSelection] = useState();
+  const [laHora, setLaHora] = useState();
+  // const [hour, setHour] = useState("10:00 AM");
+
   const {
     register,
     control,
@@ -41,7 +62,43 @@ const IniciarReserva = () => {
         Email: datosTransformados.Email,
         FechaNac: datosTransformados.FechaNac,
         Mensaje: datosTransformados.Mensaje,
+        laLocation,
+        laDateSelection,
+        dateStart: laDateSelection[0].startDate,
+        dateEnd: laDateSelection[0].endDate,
+        laHora,
+        vehiculoAAlquilar,
       });
+      const response = await axios.post("/api/send-email", {
+        ...datosTransformados,
+        laLocation,
+        laDateSelection,
+        laHora,
+        vehiculoAAlquilar,
+      });
+      const result = await response.data;
+      console.log(result);
+
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Email Enviado Con Exito",
+        showConfirmButton: false,
+        timer: 2000,
+        color: "info",
+        background: "#fff",
+        backdrop: `
+      rgba(0,0,123,0.4)
+     
+      left top
+      no-repeat
+    `,
+      });
+
+      // redireccion
+      setTimeout(() => {
+        router.push("/");
+      }, 2000);
     } catch (error) {
       console.error("Error :", error);
     }
@@ -65,9 +122,9 @@ const IniciarReserva = () => {
           </div>
 
           <div className="flex flex-col md:flex-row items-center justify-between pt-5 gap-4">
-            <LocationSelection />
-            <DateSelection />
-            <HoursSelection />
+            <LocationSelection2 setLaLocation={setLaLocation} />
+            <DateSelection2 setlaDateSelection={setlaDateSelection} />
+            <HoursSelection2 setLaHora={setLaHora} />
           </div>
 
           <div className="flex items-center justify-between p-3 mt-5 bg-white rounded-sm text-azulfuerte shadow-md">

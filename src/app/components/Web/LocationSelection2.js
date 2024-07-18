@@ -13,7 +13,7 @@ const locations = [
   "Nueva Palmira",
 ];
 
-const LocationSelection = () => {
+const LocationSelection2 = ({ setLaLocation }) => {
   const [location, setLocation] = useState("Selecciona Ubicación");
 
   return (
@@ -54,7 +54,7 @@ const LocationSelection = () => {
                   <div
                     onClick={() => {
                       setLocation(laLocation);
-
+                      setLaLocation(laLocation);
                       close();
                     }}
                     className="cursor-pointer py-4 xl:pl-10 hover:bg-gray-50 text-[13px] text-black uppercase"
@@ -71,4 +71,4 @@ const LocationSelection = () => {
   );
 };
 
-export default LocationSelection;
+export default LocationSelection2;

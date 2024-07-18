@@ -29,6 +29,8 @@ const ElCarInfo = ({ car }) => {
     aire_Acondicionado,
   } = car;
 
+  const vehiculoAAlquilar = `Me gustaria contar con el Vehciulo: ${name} ${type}`;
+
   console.log(
     type,
     name,
@@ -173,7 +175,7 @@ const ElCarInfo = ({ car }) => {
           </div>
         </div> */}
 
-        <IniciarReserva />
+        <IniciarReserva vehiculoAAlquilar={vehiculoAAlquilar} />
       </section>
 
       <Footer />

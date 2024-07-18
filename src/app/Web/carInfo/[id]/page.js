@@ -1,9 +1,8 @@
 "use client";
 import React from "react";
-import { losCars } from "@/app/components/Web/CarSlider";
-import Header from "@/app/components/Web/Header";
-import Footer from "@/app/components/Web/Footer";
-import ElCarInfo from "@/app/components/Web/ElCarInfo";
+
+import ElCarInfo from "../../../components/Web/ElCarInfo";
+import losCars from "../../../components/GetData/losCars";
 
 const buscarVehiculo = (id) => {
   try {

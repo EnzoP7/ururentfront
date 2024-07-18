@@ -18,6 +18,8 @@ const Header = () => {
   const desktopMode = useMediaQuery({
     query: "(min-width: 1300px)",
   });
+  const isMobile = useMediaQuery({ maxWidth: 1300 });
+  const isPC = useMediaQuery({ minWidth: 1300 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,6 +42,17 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   });
+  useEffect(() => {
+    if (isMobile) {
+      setNav(false); // Cerrar el menú cuando se detecta que es móvil
+    }
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (isPC) {
+      setNav(true); // Cerrar el menú cuando se detecta que es móvil
+    }
+  }, [isPC]);
 
   return (
     <header
