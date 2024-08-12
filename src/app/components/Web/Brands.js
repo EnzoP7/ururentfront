@@ -53,7 +53,7 @@ const Brands = () => {
               alt=""
             />
           </div>
-          <div>
+          <div className="hidden sm:flex">
             <Image
               src={"icons/brands/mazda.svg"}
               width={62}

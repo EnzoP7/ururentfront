@@ -70,9 +70,11 @@ const Hero = () => {
            xl:xl:max-h-[542px] xl:absolute xl:-right-[100px] min-[1680px]:right-[120px] xl:top-48"
           >
             <Image
-              src={"/images/hero/golsito.png"}
-              fill
-              alt=""
+              src={"/images/hero/golsito.webp"}
+              // fill
+              width={800}
+              height={800}
+              alt="Vehiculo"
               style={{ objectFit: "contain" }}
               priority
             />

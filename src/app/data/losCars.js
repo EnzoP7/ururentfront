@@ -14,7 +14,7 @@ const losCars = [
     aire_Acondicionado: "Si",
     price: 29,
     starts: 5.0,
-    image: "/images/cars/golsedan.jpeg",
+    image: "/images/cars/golsedan.webp",
     info: [
       {
         icon: "icons/carSlider/gearshift.svg",
@@ -53,7 +53,7 @@ const losCars = [
     aire_Acondicionado: "Si",
     price: 29,
     starts: 5.0,
-    image: "/images/cars/golhatch.jpeg",
+    image: "/images/cars/golhatch.webp",
     info: [
       {
         icon: "icons/carSlider/gearshift.svg",
@@ -92,7 +92,7 @@ const losCars = [
     aire_Acondicionado: "Si",
     price: 29,
     starts: 5.0,
-    image: "/images/cars/strada.jpeg",
+    image: "/images/cars/strada.webp",
     info: [
       {
         icon: "icons/carSlider/gearshift.svg",
@@ -131,7 +131,7 @@ const losCars = [
     aire_Acondicionado: "Si",
     price: 25,
     starts: 5,
-    image: "/images/cars/saveiro.jpeg",
+    image: "/images/cars/saveiro.webp",
     info: [
       {
         icon: "icons/carSlider/gearshift.svg",
@@ -170,7 +170,7 @@ const losCars = [
     aire_Acondicionado: "Si",
     price: 35,
     starts: 4.7,
-    image: "/images/cars/frontier.jpeg",
+    image: "/images/cars/frontier.webp",
     info: [
       {
         icon: "icons/carSlider/gearshift.svg",
@@ -210,7 +210,7 @@ const losCars = [
     aire_Acondicionado: "Si",
     price: 29,
     starts: 5.0,
-    image: "/images/cars/fiorino.jpeg",
+    image: "/images/cars/fiorino.webp",
     info: [
       {
         icon: "icons/carSlider/gearshift.svg",

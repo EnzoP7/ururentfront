@@ -11,7 +11,13 @@ const SearchMobile = () => {
           <DateSelection />
           <HoursSelection />
           <div className="flex items-center px-6">
-            <button className="btn btn-sm bg-accent-hover text-accent w-[164px] mx-auto">
+            <button
+              className="btn btn-sm bg-accent-hover text-accent w-[164px] mx-auto"
+              onClick={() =>
+                (window.location.href =
+                  "mailto:enzopontet2003@gmail.com?subject=Estoy Interesado en Consultar Disponibilidad de Vehiculos")
+              }
+            >
               Buscar
             </button>
           </div>

@@ -51,7 +51,7 @@ const SecondHeader = () => {
       <div className="xl:container mx-auto flex flex-col xl:flex-row xl:items-center xl:justify-between">
         <div className="flex justify-between items-center px-4">
           {/*Logo */}
-          <Link href="/" className="cursor-pointer">
+          <Link href={"/"} className="cursor-pointer">
             <Image
               src={"/images/marca/logo.png"}
               width={194}
@@ -79,31 +79,28 @@ const SecondHeader = () => {
            xl:flex-row xl:w-max xl:gap-x-8 xl:h-max xl:bg-transparent xl:pb-0 transition-all duration-150
           text-center xl:text-left uppercase text-sm xl:text-[15px] xl:normal-case text-white`}
         >
-          <Link className="cursor-pointer" href="/">
+          <Link className="cursor-pointer" href={"/"}>
             Inicio
           </Link>
-          <Link className="cursor-pointer" href="/">
+          <Link className="cursor-pointer" href={"/"}>
             Vehículos
           </Link>
-          <Link className="cursor-pointer" href="/">
+          <Link className="cursor-pointer" href={"/"}>
             Sobre Nosotros
           </Link>
-          <Link className="cursor-pointer" href="/">
+          <Link className="cursor-pointer" href={"/"}>
             ¿Por qué elegirnos?
           </Link>
-          <Link className="cursor-pointer" href="/">
-            Testimonios
-          </Link>
-          <Link className="cursor-pointer" href="/">
+          <Link className="cursor-pointer" href={"/"}>
             Contacto
           </Link>
-          <Link href="/login" className="cursor-pointer">
+          <Link href={"/"} className="cursor-pointer">
             Iniciar Sesión
           </Link>
 
           <Link
             className="xl:hidden btn bg-accent-hover text-accent btn-sm max-w-[164px] mx-auto"
-            href="/"
+            href={"/"}
           >
             Ver Vehículos
           </Link>

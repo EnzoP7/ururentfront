@@ -6,7 +6,7 @@ import { fadeIn } from "../../../../variants";
 import { FaPhone, FaEnvelope } from "react-icons/fa6";
 
 import Copyright from "./Copyright";
-import { Link } from "react-scroll";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -20,12 +20,12 @@ const Footer = () => {
           className="flex flex-col lg:flex-row lg:justify-between gap-x-5 gap-y-14"
         >
           <div className="flex flex-col flex-1 gap-y-0">
-            <Link to="home" smooth={true} spy={true} className="cursor-pointer">
+            <Link href={"/"} className="cursor-pointer">
               <Image
                 src={"/images/marca/logo.png"}
                 width={200}
                 height={200}
-                alt=""
+                alt="Logo Ururent"
               />
             </Link>
             {/* <div className="text-secondary">

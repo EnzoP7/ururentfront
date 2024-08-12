@@ -33,13 +33,19 @@ const CarSlider = () => {
           return (
             <SwiperSlide key={index}>
               <div className="max-w-[385px] mx-auto sm:mx-0  ">
-                <Image src={car.image} width={380} height={284} alt="" />
+                <Image
+                  src={car.image}
+                  width={380}
+                  height={284}
+                  alt="Vehiculo"
+                  loading="lazy"
+                />
                 <div className="flex justify-between">
                   <div>
                     <div className="text-[13px] text-secondary uppercase">
                       {car.type}
                     </div>
-                    <h3 className="text-lg uppercase font-bold">{car.name}</h3>
+                    <h2 className="text-lg uppercase font-bold">{car.name}</h2>
                     <h3 className="mb-10 text-accent font-semibold uppercase">
                       {car.price}/dia
                     </h3>

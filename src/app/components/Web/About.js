@@ -21,8 +21,8 @@ const About = () => {
   });
   return (
     <section className="section flex items-center " id="about" ref={ref}>
-      <div className="container mx-auto">
-        <div className="flex flex-col xl:flex-row xl:justify-between">
+      <div className="container mx-auto py-4 ">
+        <div className="flex py-4 flex-col xl:flex-row xl:justify-between">
           <motion.div
             variants={fadeIn("up", 0.2)}
             initial="hidden"
@@ -35,6 +35,7 @@ const About = () => {
               src={"/images/about/frenteuru.webp"}
               width={600}
               height={448}
+              alt="Sobre Ururent"
             />
           </motion.div>
           <div className="flex-1 flex items-center xl:justify-center ">
@@ -83,9 +84,9 @@ const About = () => {
                 initial="hidden"
                 whileInView={"show"}
                 viewport={{ once: false, amount: 0.2 }}
-                className="flex items-center gap-x-8 mb-12"
+                className="  flex flex-wrap sm:flex-row items-center justify-center py-8 gap-x-8 mb-12"
               >
-                <div className="flex flex-col w-[100px]">
+                <div className="flex flex-col sm:w-[100px]">
                   <MdOutlineDirectionsCar className="text-5xl text-accent mb-2" />
                   <div className="text-3xl font-black mb-2">
                     {inView ? (
@@ -97,7 +98,7 @@ const About = () => {
                     Vehículos
                   </div>
                 </div>
-                <div className="flex flex-col w-[100px]">
+                <div className="flex flex-col sm:w-[100px]">
                   <MdOutlineMapsHomeWork className="text-5xl text-accent mb-2" />
                   <div className="text-3xl font-black mb-2">
                     {inView ? (
@@ -110,7 +111,7 @@ const About = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-col w-[100px]">
+                <div className="flex flex-col sm:w-[100px]">
                   <MdOutlineBuildCircle className="text-5xl text-accent mb-2" />
                   <div className="text-3xl font-black mb-2">
                     {inView ? (

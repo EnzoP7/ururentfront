@@ -3,7 +3,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import Link from "next/link";
-import { Link as ScrollLink } from "react-scroll";
+
 import Image from "next/image";
 
 import { BiMenuAltRight, BiX } from "react-icons/bi";
@@ -64,20 +64,16 @@ const Header = () => {
       <div className="xl:container mx-auto flex flex-col xl:flex-row xl:items-center xl:justify-between">
         <div className="flex justify-between items-center px-4">
           {/*Logo */}
-          <ScrollLink
-            to="home"
-            smooth={desktopMode}
-            spy={true}
-            className="cursor-pointer"
-          >
+
+          <Link href={"/"}>
             <Image
-              src={"/images/marca/logo.png"}
+              src={"/images/marca/logo.webp"}
               width={194}
               height={64}
               alt="Logo"
+              priority
             />
-          </ScrollLink>
-          {/* Nav open Menu*/}
+          </Link>
           <div
             onClick={() => setNav(!nav)}
             className="cursor-pointer xl:hidden"
@@ -89,7 +85,6 @@ const Header = () => {
             )}
           </div>
         </div>
-        {/* Nav*/}
         <nav
           className={`${
             nav ? "max-h-max py-8 px-4 xl:py-0 xl:px-0" : "max-h-0"
@@ -97,73 +92,51 @@ const Header = () => {
            xl:flex-row xl:w-max xl:gap-x-8 xl:h-max xl:bg-transparent xl:pb-0 transition-all duration-150
           text-center xl:text-left uppercase text-sm xl:text-[15px] xl:normal-case text-white`}
         >
-          <ScrollLink
+          <Link
+            href="#home"
             className="cursor-pointer"
-            to="home"
-            activeClass="active"
-            smooth={desktopMode}
-            spy={true}
+            onClick={() => setNav(false)}
           >
             Inicio
-          </ScrollLink>
-          <ScrollLink
+          </Link>
+          <Link
+            href="#cars"
             className="cursor-pointer"
-            to="cars"
-            activeClass="active"
-            smooth={desktopMode}
-            spy={true}
+            onClick={() => setNav(false)}
           >
             Vehículos
-          </ScrollLink>
-          <ScrollLink
+          </Link>
+          <Link
+            href="#about"
             className="cursor-pointer"
-            to="about"
-            activeClass="active"
-            smooth={desktopMode}
-            spy={true}
+            onClick={() => setNav(false)}
           >
             Sobre Nosotros
-          </ScrollLink>
-          <ScrollLink
+          </Link>
+          <Link
+            href="#why"
             className="cursor-pointer"
-            to="why"
-            activeClass="active"
-            smooth={desktopMode}
-            spy={true}
+            onClick={() => setNav(false)}
           >
             ¿Por qué elegirnos?
-          </ScrollLink>
-          <ScrollLink
+          </Link>
+          <Link
+            href="#contact"
             className="cursor-pointer"
-            to="testimonials"
-            activeClass="active"
-            smooth={desktopMode}
-            spy={true}
-          >
-            Testimonios
-          </ScrollLink>
-          <ScrollLink
-            className="cursor-pointer"
-            to="contact"
-            activeClass="active"
-            smooth={desktopMode}
-            spy={true}
+            onClick={() => setNav(false)}
           >
             Contacto
-          </ScrollLink>
-          <Link href="/" className="cursor-pointer">
+          </Link>
+          <Link href={"/"} className="cursor-pointer">
             Iniciar Sesión
           </Link>
 
-          <ScrollLink
+          <Link
+            href={"/"}
             className="xl:hidden btn bg-accent-hover text-accent btn-sm max-w-[164px] mx-auto"
-            to="/"
-            activeClass="active"
-            smooth={desktopMode}
-            spy={true}
           >
             Ver Vehículos
-          </ScrollLink>
+          </Link>
 
           <SearchMobile />
         </nav>

@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+"use client";
+import React, { useContext, useEffect, useState } from "react";
 import { SearchContext } from "../../context/search";
 import LocationSelection from "./LocationSelection";
 import DateSelection from "./DateSelection";
@@ -26,7 +27,10 @@ const Search = () => {
         <HoursSelection />
         <div className="xl:h-full flex items-center px-6 xl:px-0 xl:pr-3">
           <button
-            onClick={() => router.push("/Web/pagReserva")}
+            onClick={() =>
+              (window.location.href =
+                "mailto:enzopontet2003@gmail.com?subject=Estoy Interesado en Consultar Disponibilidad de Vehiculos")
+            }
             className={`${
               searchActive
                 ? "btn btn-sm btn-accent xl:w-[164px]"

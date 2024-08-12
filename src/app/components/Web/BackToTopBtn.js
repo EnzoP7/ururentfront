@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { FaChevronUp } from "react-icons/fa";
 
-import { Link } from "react-scroll";
+import Link from "next/link";
 
 const BackToTopBtn = () => {
   const [active, setActive] = useState(false);
@@ -25,9 +25,7 @@ const BackToTopBtn = () => {
   });
   return (
     <Link
-      to="home"
-      smooth={true}
-      spy={true}
+      href={"/"}
       className={`${
         !active && "hidden"
       } fixed bg-accent hover:bg-accent-hover w-12 h-12 right-[20px] bottom-11 z-10  
