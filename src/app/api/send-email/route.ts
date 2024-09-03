@@ -14,8 +14,10 @@ interface RequestBody {
   vehiculoAAlquilar:string
 }
 
+const apiUrl = process.env.NEXT_PUBLIC_RESEND_API_KEY
+
 // Initialize Resend with the API key
-const resend = new Resend("re_8CKS6g7H_EvLaLDXN6GbM6CqXWWsaWxJh");
+const resend = new Resend(apiUrl);
 
 export async function POST(req: Request): Promise<Response> {
   console.log("LA REQUEST: ", req);

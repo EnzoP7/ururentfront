@@ -67,23 +67,42 @@ const IniciarReserva2 = () => {
       });
       const result = await response.data;
       console.log(result);
+      console.log("LA RESPONSE STATUS: ", response.status);
 
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Email Enviado Con Exito",
-        showConfirmButton: false,
-        timer: 2000,
-        color: "info",
-        background: "#fff",
-        backdrop: `
+      if ((response.status = 200)) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Email Enviado Con Exito",
+          showConfirmButton: false,
+          timer: 2000,
+          color: "info",
+          background: "#fff",
+          backdrop: `
       rgba(0,0,123,0.4)
      
       left top
       no-repeat
     `,
-      });
-
+        });
+      } else {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title:
+            "Algo Salio Mal, Contactanos por nuestro Gmail:Info@Ururent.com.uy",
+          showConfirmButton: false,
+          timer: 2000,
+          color: "info",
+          background: "#fff",
+          backdrop: `
+      rgba(0,0,123,0.4)
+     
+      left top
+      no-repeat
+    `,
+        });
+      }
       // redireccion
       setTimeout(() => {
         router.push("/");
