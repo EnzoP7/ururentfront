@@ -16,10 +16,10 @@ const Header = () => {
   const [nav, setNav] = useState(true);
 
   const desktopMode = useMediaQuery({
-    query: "(min-width: 1270px)",
+    query: "(min-width: 1280px)",
   });
-  const isMobile = useMediaQuery({ maxWidth: 1270 });
-  const isPC = useMediaQuery({ minWidth: 1270 });
+  const isMobile = useMediaQuery({ maxWidth: 1279 });
+  const isPC = useMediaQuery({ minWidth: 1280 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,7 +61,7 @@ const Header = () => {
       }
   fixed w-full max-w-[1920px] mx-auto z-20 transition-all duration-300`}
     >
-      <div className="xl:container mx-auto flex flex-col xl:flex-row xl:items-center xl:justify-between">
+      <div className=" xlg:container mx-auto flex flex-col xlg:flex-row xlg:items-center xlg:justify-between">
         <div className="flex justify-between items-center px-4">
           {/*Logo */}
           <ScrollLink
@@ -70,7 +70,7 @@ const Header = () => {
             spy={true}
             className="cursor-pointer"
           >
-            <div className="hidden xl:flex">
+            <div className="hidden xlg:flex">
               <Image
                 src={"/images/marca/logo.png"}
                 width={194}
@@ -80,7 +80,7 @@ const Header = () => {
               />
             </div>
 
-            <div className="xl:hidden">
+            <div className="xlg:hidden">
               <Image
                 src={"/images/marca/logo.png"}
                 width={130}
@@ -93,7 +93,7 @@ const Header = () => {
           {/* Nav open Menu*/}
           <div
             onClick={() => setNav(!nav)}
-            className="cursor-pointer xl:hidden"
+            className="cursor-pointer md:hidden"
           >
             {nav ? (
               <BiX className="text-4xl text-white" />
@@ -105,10 +105,10 @@ const Header = () => {
         {/* Nav*/}
         <nav
           className={`${
-            nav ? "max-h-max py-8 px-4 xl:py-0 xl:px-0" : "max-h-0"
-          } flex flex-col w-full bg-accent gap-y-6 overflow-hidden font-bold xl:font-medium
-           xl:flex-row xl:w-max xl:gap-x-8 xl:h-max xl:bg-transparent xl:pb-0 transition-all duration-150
-          text-center xl:text-left uppercase text-sm xl:text-[15px] xl:normal-case text-white`}
+            nav ? "max-h-max py-8 px-4 md:py-0 md:px-0" : "max-h-0"
+          } flex flex-col w-full bg-accent gap-y-6 overflow-hidden font-bold md:font-medium
+           md:flex-row md:w-max md:gap-x-8 md:h-max md:bg-transparent md:pb-0 transition-all duration-150
+          text-center md:text-left uppercase text-sm md:text-[15px] md:normal-case text-white`}
         >
           <ScrollLink
             className="cursor-pointer"
@@ -159,6 +159,7 @@ const Header = () => {
           <Link href="/login" className="cursor-pointer">
             Iniciar Sesión
           </Link>
+          {/* <div className="hidden ">
 
           <ScrollLink
             className="xl:hidden btn bg-accent-hover text-accent btn-sm max-w-[164px] mx-auto"
@@ -170,7 +171,8 @@ const Header = () => {
             Ver Vehículos
           </ScrollLink>
 
-          <SearchMobile />
+          <SearchMobile /> */}
+          {/* </div> */}
         </nav>
       </div>
     </header>

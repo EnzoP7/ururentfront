@@ -15,8 +15,18 @@ module.exports = {
       sm: "640px",
       md: "768px",
       lg: "1024px",
-      xl: "1270px",
+      xlg: "1270px",
+      xl: "1300px",
+      // xxll: "1300",
     },
+    // screens: {
+    //   sm: "640px", // Breakpoint predeterminado de Tailwind CSS
+    //   md: "768px", // Breakpoint predeterminado de Tailwind CSS
+    //   lg: "1024px", // Breakpoint predeterminado de Tailwind CSS
+    //   xl: "1280px", // Breakpoint predeterminado de Tailwind CSS (renombrado de xlg)
+    //   "2xl": "1536px", // Breakpoint predeterminado de Tailwind CSS (renombrado de xl)
+    //   "3xl": "1600px", // Breakpoint personalizado para pantallas más grandes
+    // },
     extend: {
       colors: {
         azul: "#34338B",

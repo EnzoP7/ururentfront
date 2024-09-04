@@ -39,7 +39,9 @@ export default function Home() {
         <Why />
       </div>
       {/* <Testimonial /> */}
-      <Cta />
+      <div className="hidden md:mt-10 xl:mt-0  md:flex">
+        <Cta />
+      </div>
       <Footer />
       <BackToTopBtn />
 

@@ -20,9 +20,13 @@ const About = () => {
     threshold: 0.5,
   });
   return (
-    <section className="section flex items-center " id="about" ref={ref}>
-      <div className="container mx-auto py-4 ">
-        <div className="flex py-4 flex-col xl:flex-row xl:justify-between">
+    <section
+      className="section flex items-center md:mt-30 xl:mt-0"
+      id="about"
+      ref={ref}
+    >
+      <div className="container mx-auto py-4  md:mt-30 xl:mt-0">
+        <div className="flex py-4 flex-col md:flex-row xl:justify-between">
           <motion.div
             variants={fadeIn("up", 0.2)}
             initial="hidden"

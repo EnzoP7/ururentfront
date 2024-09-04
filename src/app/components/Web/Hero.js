@@ -12,10 +12,10 @@ import { fadeIn } from "../../../../variants";
 const Hero = () => {
   const { searchActive } = useContext(SearchContext);
   return (
-    <section className="h-screen xl:h-[90vh] bg-[#b2b7c2]/10" id="home">
+    <section className="h-screen  md:h-[90vh] bg-[#b2b7c2]/10" id="home">
       <div className="container mx-auto h-full xl:pt-10">
-        <div className="flex flex-col xl:flex-row justify-center items-center xl:justify-start h-full">
-          <div className="text-center xl:max-w-xl xl:text-left mt-16 xl:mt-0">
+        <div className="flex flex-col md:flex-row justify-center items-center md:justify-center xl:justify-start h-full">
+          <div className="text-center md:max-w-2xl xl:max-w-xl md:text-left mt-16 md:mt-0">
             <motion.h1
               variants={fadeIn("down", 0.2)}
               initial="hidden"
@@ -31,7 +31,7 @@ const Hero = () => {
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: false, amount: 0.6 }}
-              className="description max-w-[550px] mx-auto xl:mx-0 mb-6 xl:mb-10"
+              className="description   md:max-w-[550px] mx-auto md:mx-0 mb-6 md:mb-10"
             >
               Encuentre su vehículo ideal para cualquier aventura con nuestra
               gama de vehículos. Alquiler de coches accsesibles y fiables.
@@ -69,15 +69,30 @@ const Hero = () => {
             className="relative w-full h-full max-h-[50vh] md:max-w-[70vh] xl:max-w-[860px]
            xl:xl:max-h-[542px] xl:absolute xl:-right-[100px] min-[1680px]:right-[120px] xl:top-48"
           >
-            <Image
-              src={"/images/hero/golsito.webp"}
-              // fill
-              width={800}
-              height={800}
-              alt="Vehiculo"
-              style={{ objectFit: "contain" }}
-              priority
-            />
+            <div className=" xl:hidden">
+              <Image
+                src={"/images/hero/golsito.webp"}
+                // fill
+                width={600}
+                height={600}
+                className=""
+                alt="Vehiculo"
+                style={{ objectFit: "contain" }}
+                priority
+              />
+            </div>
+            <div className="hidden  xl:flex">
+              <Image
+                src={"/images/hero/golsito.webp"}
+                // fill
+                width={800}
+                height={800}
+                className=""
+                alt="Vehiculo"
+                style={{ objectFit: "contain" }}
+                priority
+              />
+            </div>
           </motion.div>
         </div>
       </div>

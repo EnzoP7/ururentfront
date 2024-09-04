@@ -6,7 +6,7 @@ import { fadeIn } from "../../../../variants";
 
 const Brands = () => {
   return (
-    <section className="xl:pt-16 xl:h-[200px] bg-white flex flex-col justify-center">
+    <section className="md:pt-3 xl:pt-16 xl:h-[200px] bg-white flex flex-col justify-center">
       <motion.div
         variants={fadeIn("up", 0.4)}
         initial="hidden"
@@ -53,7 +53,7 @@ const Brands = () => {
               alt=""
             />
           </div>
-          <div className="hidden sm:flex">
+          <div className="hidden xl:flex">
             <Image
               src={"icons/brands/mazda.svg"}
               width={62}

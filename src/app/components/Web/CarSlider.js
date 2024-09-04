@@ -20,7 +20,7 @@ const CarSlider = () => {
       initial="hidden"
       whileInView={"show"}
       viewport={{ once: false, amount: 0.2 }}
-      className="container mx-auto"
+      className="container mx-auto md:mb-10 xl:mb-0"
     >
       <Swiper
         breakpoints={{
@@ -32,9 +32,10 @@ const CarSlider = () => {
         {losCars.map((car, index) => {
           return (
             <SwiperSlide key={index}>
-              <div className="max-w-[385px] mx-auto sm:mx-0  ">
+              <div className="md:max-w-[300px]  xl:max-w-[385px] mx-auto sm:mx-0  ">
                 <Image
                   src={car.image}
+                  className="md:w-[352] md:h-[220] xl:w-[385] xl:h-[284] "
                   width={380}
                   height={284}
                   alt="Vehiculo"
