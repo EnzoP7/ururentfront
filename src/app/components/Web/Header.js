@@ -16,10 +16,10 @@ const Header = () => {
   const [nav, setNav] = useState(true);
 
   const desktopMode = useMediaQuery({
-    query: "(min-width: 1300px)",
+    query: "(min-width: 1270px)",
   });
-  const isMobile = useMediaQuery({ maxWidth: 1300 });
-  const isPC = useMediaQuery({ minWidth: 1300 });
+  const isMobile = useMediaQuery({ maxWidth: 1270 });
+  const isPC = useMediaQuery({ minWidth: 1270 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,7 +57,7 @@ const Header = () => {
   return (
     <header
       className={` ${
-        header ? "bg-azul shadow-md py-2 " : "bg-azul shadow-none py-4"
+        header ? "bg-azul shadow-md py-2 " : "bg-azul shadow-none py-2"
       }
   fixed w-full max-w-[1920px] mx-auto z-20 transition-all duration-300`}
     >
@@ -70,12 +70,25 @@ const Header = () => {
             spy={true}
             className="cursor-pointer"
           >
-            <Image
-              src={"/images/marca/logo.png"}
-              width={194}
-              height={64}
-              alt="Logo"
-            />
+            <div className="hidden xl:flex">
+              <Image
+                src={"/images/marca/logo.png"}
+                width={194}
+                height={64}
+                // className="w-[130px] h-[34px]  xl:w-[194px] xl:h-[64px]"
+                alt="Logo"
+              />
+            </div>
+
+            <div className="xl:hidden">
+              <Image
+                src={"/images/marca/logo.png"}
+                width={130}
+                height={34}
+                // className="w-[130px] h-[34px]  xl:w-[194px] xl:h-[64px]"
+                alt="Logo"
+              />
+            </div>
           </ScrollLink>
           {/* Nav open Menu*/}
           <div
