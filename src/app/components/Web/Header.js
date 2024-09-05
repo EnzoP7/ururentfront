@@ -116,7 +116,7 @@ const Header = () => {
             activeClass="active"
             smooth={desktopMode}
             spy={true}
-            onClick={() => setNav(false)}
+            onClick={() => (isMobile ? setNav(false) : null)}
           >
             Inicio
           </ScrollLink>
@@ -126,7 +126,7 @@ const Header = () => {
             activeClass="active"
             smooth={desktopMode}
             spy={true}
-            onClick={() => setNav(false)}
+            onClick={() => (isMobile ? setNav(false) : null)}
           >
             Vehículos
           </ScrollLink>
@@ -136,7 +136,7 @@ const Header = () => {
             activeClass="active"
             smooth={desktopMode}
             spy={true}
-            onClick={() => setNav(false)}
+            onClick={() => (isMobile ? setNav(false) : null)}
           >
             Sobre Nosotros
           </ScrollLink>
@@ -156,7 +156,7 @@ const Header = () => {
             activeClass="active"
             smooth={desktopMode}
             spy={true}
-            onClick={() => setNav(false)}
+            onClick={() => (isMobile ? setNav(false) : null)}
           >
             Contacto
           </ScrollLink>
