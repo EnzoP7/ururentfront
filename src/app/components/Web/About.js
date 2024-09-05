@@ -28,7 +28,7 @@ const About = () => {
       <div className="container mx-auto py-4  mt-20 md:mt-30 xl:mt-0">
         <div className="flex py-4 flex-col md:flex-row xl:justify-between">
           <motion.div
-            variants={fadeIn("up", 0.2)}
+            variants={fadeIn("down", 0.2)}
             initial="hidden"
             whileInView={"show"}
             viewport={{ once: false, amount: 0.6 }}

@@ -34,7 +34,7 @@ const Hero = () => {
               className="description   md:max-w-[550px] mx-auto md:mx-0 mb-6 md:mb-10"
             >
               Encuentre su vehículo ideal para cualquier aventura con nuestra
-              gama de vehículos. Alquiler de coches accsesibles y fiables.
+              gama de vehículos. Alquiler de coches accesibles y fiables.
             </motion.p>
             {/* <motion.div
               variants={fadeIn("down", 0.6)}
@@ -62,7 +62,7 @@ const Hero = () => {
             </motion.div> */}
           </div>
           <motion.div
-            variants={fadeIn("up", 0.6)}
+            variants={fadeIn("down", 0.6)}
             initial="hidden"
             whileInView={"show"}
             viewport={{ once: false, amount: 0.8 }}
