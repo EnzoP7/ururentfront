@@ -9,8 +9,14 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata = {
-  title: "Ururent",
-  description: "Alquiler de Vehiculos en todo el País",
+  title:
+    "Ururent - Alquiler de Vehículos en Todo el País | Vehículos confiables al mejor precio",
+  description:
+    "Ururent ofrece una amplia flota de autos, SUVs y camionetas para alquilar en todo Uruguay. Con más de 300 vehículos y 15 años de experiencia, encuentra el auto ideal para tu viaje.",
+  keywords:
+    "alquiler de autos, renta de vehículos, Uruguay, coches, autos económicos, camionetas, SUVs, alquiler a largo plazo, alquiler por día, renta de autos en Carmelo",
+  robots: "index, follow",
+  canonical: "https://www.ururent.com",
 };
 
 export default function RootLayout({ children }) {
@@ -20,6 +26,18 @@ export default function RootLayout({ children }) {
         <Head>
           {/* Preconectar a Google Fonts */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link
+            rel="icon"
+            href="public/images/marca/logo.ico"
+            type="image/x-icon"
+          />
+
+          <link
+            rel="icon"
+            href="/public/images/marca/logo.png"
+            type="image/png"
+          />
+
           <link
             rel="preconnect"
             href="https://fonts.gstatic.com"
