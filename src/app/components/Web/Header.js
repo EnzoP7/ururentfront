@@ -116,6 +116,7 @@ const Header = () => {
             activeClass="active"
             smooth={desktopMode}
             spy={true}
+            onClick={() => setNav(false)}
           >
             Inicio
           </ScrollLink>
@@ -125,6 +126,7 @@ const Header = () => {
             activeClass="active"
             smooth={desktopMode}
             spy={true}
+            onClick={() => setNav(false)}
           >
             Vehículos
           </ScrollLink>
@@ -134,6 +136,7 @@ const Header = () => {
             activeClass="active"
             smooth={desktopMode}
             spy={true}
+            onClick={() => setNav(false)}
           >
             Sobre Nosotros
           </ScrollLink>
@@ -153,6 +156,7 @@ const Header = () => {
             activeClass="active"
             smooth={desktopMode}
             spy={true}
+            onClick={() => setNav(false)}
           >
             Contacto
           </ScrollLink>

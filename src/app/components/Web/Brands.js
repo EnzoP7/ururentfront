@@ -14,7 +14,7 @@ const Brands = () => {
         viewport={{ once: false, amount: 0.6 }}
         className="container mx-auto"
       >
-        <div className="grid grid-cols-3 gap-6 place-items-center xl:flex xl:flex-wrap xl:gap-x-6 xl:justify-between">
+        <div className="grid grid-cols-3 pt-3 md:pt-0 gap-6 place-items-center xl:flex xl:flex-wrap xl:gap-x-6 xl:justify-between">
           <div>
             <Image
               src={"icons/brands/ford.svg"}

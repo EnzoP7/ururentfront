@@ -21,7 +21,7 @@ const Hero = () => {
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: false, amount: 0.6 }}
-              className="h1"
+              className="h1 pt-3 md:pt-0"
             >
               Llegá a <span className="text-accent">Cualquier Parte</span> del
               País

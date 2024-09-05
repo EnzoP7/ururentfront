@@ -7,7 +7,7 @@ import { fadeIn } from "../../../../variants";
 const Cta = () => {
   return (
     <section
-      className="pt-24 md:pt-5 xl:pt-48 section flex items-end bg-[#b2b7c2]/10 overflow-hidden"
+      className="pt-24 md:pt-0 xl:pt-48 section flex items-end bg-[#b2b7c2]/10 overflow-hidden"
       id="contact"
     >
       <div className="container mx-auto">

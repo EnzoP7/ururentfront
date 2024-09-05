@@ -21,11 +21,11 @@ const About = () => {
   });
   return (
     <section
-      className="section flex items-center md:mt-30 xl:mt-0"
+      className="section flex items-center mt-[250px] mb-[250px] md:mb-0 md:mt-30 xl:mt-0"
       id="about"
       ref={ref}
     >
-      <div className="container mx-auto py-4  md:mt-30 xl:mt-0">
+      <div className="container mx-auto py-4  mt-20 md:mt-30 xl:mt-0">
         <div className="flex py-4 flex-col md:flex-row xl:justify-between">
           <motion.div
             variants={fadeIn("up", 0.2)}
