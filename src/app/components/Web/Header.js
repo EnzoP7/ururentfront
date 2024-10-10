@@ -160,7 +160,10 @@ const Header = () => {
           >
             Contacto
           </ScrollLink>
-          <Link href="/login" className="cursor-pointer">
+          <Link
+            href="https://apps5.genexus.com/TesisUruRent/login.aspx"
+            className="cursor-pointer"
+          >
             Iniciar Sesión
           </Link>
           {/* <div className="hidden ">

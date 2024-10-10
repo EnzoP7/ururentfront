@@ -94,7 +94,10 @@ const SecondHeader = () => {
           <Link className="cursor-pointer" href={"/"}>
             Contacto
           </Link>
-          <Link href={"/"} className="cursor-pointer">
+          <Link
+            href="https://apps5.genexus.com/TesisUruRent/login.aspx"
+            className="cursor-pointer"
+          >
             Iniciar Sesión
           </Link>
           {/* 
